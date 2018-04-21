@@ -48,7 +48,7 @@ class EventController extends Controller
                 $end_timestamp = Carbon::createFromFormat('Y-m-d H:i:s', $eve->end_date);
 
 
-                 $events = \Calendar::event(
+                 $events[] = \Calendar::event(
                  $eve->titre, //event title
                  $eve->name,
                  $start_timestamp,//->toTimeString(), //start time (you can also use Carbon instead of DateTime)
@@ -76,7 +76,7 @@ class EventController extends Controller
 
                 ])->setCallbacks([]);
                 //return dd($calendar);
-                return view('aevent', compact('calendar','patients'));
+                return view('aevent', compact(['calendar'=>'$calendar'],['patients'=>'$patients']));
 
                 //return view('aevent');
             }
