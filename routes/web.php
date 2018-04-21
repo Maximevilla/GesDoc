@@ -19,7 +19,7 @@ Route::middleware(['auth'])->group(function () {
   //Route::get('/admin', function () {
     //   return view('admin');});
 
-    Route::get('aevent',array('as'=>'aevent','uses'=>'EventController@aevent'));
+    Route::get('aevent','EventController@aevent');
     Route::get('admin',array('as'=>'admin','uses'=>'DocteursController@index'));
     Route::post('admin',array('as'=>'admin.store','uses'=>'DocteursController@store'));
 
