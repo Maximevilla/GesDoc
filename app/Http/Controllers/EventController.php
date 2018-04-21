@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Event;
 use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 use Carbon\Carbon;
-use App\EventModel; 
+use App\EventModel;
 
 class EventController extends Controller
 {
@@ -37,6 +37,7 @@ class EventController extends Controller
             {
               $userid =  \Auth::user()->id ;
               $event = \App\Event::all();
+              $events = [];
 
               $patients = \DB::table('patients')->where(function ($query) use ($userid) {
                 $query->where('users_id', '=', $userid);
@@ -46,7 +47,8 @@ class EventController extends Controller
                 $start_timestamp = Carbon::createFromFormat('Y-m-d H:i:s', $eve->start_date);
                 $end_timestamp = Carbon::createFromFormat('Y-m-d H:i:s', $eve->end_date);
 
-                 $events[] = \Calendar::event(
+
+                 $events = \Calendar::event(
                  $eve->titre, //event title
                  $eve->name,
                  $start_timestamp,//->toTimeString(), //start time (you can also use Carbon instead of DateTime)
