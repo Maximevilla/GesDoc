@@ -7,7 +7,7 @@ require 'recipe/laravel.php';
 set('application', 'gesdoc');
 
 // Project repository
-set('repository', 'git@gitlab.com:Maximevilla/repository.git');
+set('repository', 'git@gitlab.com:Maximevilla/GesDoc.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true); 
@@ -40,5 +40,5 @@ after('deploy:failed', 'deploy:unlock');
 
 // Migrate database before symlink new release.
 
-//before('deploy:symlink', 'artisan:migrate');
+before('deploy:symlink', 'artisan:migrate');
 
