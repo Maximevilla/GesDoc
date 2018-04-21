@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Event;
 use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 use Carbon\Carbon;
+use App\EventModel; 
 
 class EventController extends Controller
 {
@@ -97,7 +98,7 @@ class EventController extends Controller
                 $start_timestamp = Carbon::createFromFormat('Y-m-d H:i:s', $eve->start_date);
                 $end_timestamp = Carbon::createFromFormat('Y-m-d H:i:s', $eve->end_date);
 
-                global $events;
+
                  $events[] = \Calendar::event(
                  $eve->titre, //event title
                  $eve->name,
