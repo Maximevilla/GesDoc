@@ -82,6 +82,7 @@ class EventController extends Controller
             {
               //  $events = [];
                 //$data = Event::all();
+                global $events;
                 $event = \App\Event::all();
                 // ----------Pour multiples users----
               //  $userid =  \Auth::user()->id ;
