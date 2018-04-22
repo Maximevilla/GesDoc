@@ -117,7 +117,7 @@
                <div>
                  <a href="{{ route('pdfview',['download'=>'pdf','patient_id'=>$patient->id]) }}">
                  <button class="btn btn-default">
-                 Fichier PDF
+                 PDF Global
                </button>
                </a>
                <hr>
@@ -149,7 +149,7 @@
                        <span class="time"><i class="fa  fa-money"></i> <strong>Tarif : {{$consultation->tarif}}</strong></span>
                      </div>
                      <div class="timeline-footer">
-                         <a href="{{ route('pdfviewuneconsult',['download'=>'pdf','consult_id'=>$consultation->cons_id,'patient_id'=>$patient->id]) }}" class="btn btn-primary btn-xs">Imprimer</a>
+                         <a href="{{ route('pdfviewuneconsult',['download'=>'pdf','consult_id'=>$consultation->cons_id,'patient_id'=>$patient->id]) }}" class="btn btn-primary btn-xs">PDF</a>
                          <a class="btn btn-danger btn-xs">Effacer</a>
                        </div>
 
@@ -172,9 +172,9 @@
                <!-- Post -->
 
                <div>
-                 <a href="{{ route('pdfview',['download'=>'pdf','patient_id'=>$patient->id]) }}">
+                 <a href="{{ route('pdfviewordonnances',['download'=>'pdf','patient_id'=>$patient->id]) }}">
                  <button class="btn btn-default">
-                 Fichier PDF
+                 PDF Global
                </button>
                </a>
                <hr>
@@ -205,7 +205,7 @@
 
                      </div>
                    <div class="timeline-footer">
-                       <a class="btn btn-primary btn-xs">Imprimer</a>
+                       <a href="{{ route('pdfviewuneordonnance',['download'=>'pdf','ord_id'=>$ordonnance->id,'patient_id'=>$patient->id]) }}" class="btn btn-primary btn-xs">PDF</a>
                        <a class="btn btn-danger btn-xs">Effacer</a>
                      </div>
                    </div>

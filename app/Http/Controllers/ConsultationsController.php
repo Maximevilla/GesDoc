@@ -94,6 +94,48 @@ class ConsultationsController extends Controller
 
     }
 
+    public function pdfviewordonnances(Request $request)
+
+    {
+
+      $userid =  \Auth::user()->id ;
+      $patient = \App\Patient::findOrFail($request->patient_id);
+
+      $docteur = \DB::table('docteurs')->where(function ($query) use ($userid) {
+          $query->where('users_id', '=', $userid);
+        })->get();
+
+
+      $ordonnances = \DB::table('ordonnances')->where(function ($query) use ($userid,$patient) {
+        $query->where('ord_user_id', '=', $userid)
+        ->where('ord_patient_id','=',$patient->id);
+      })->get();
+
+  //    $items = \DB::table("consultations")
+  //      ->where('cons_user_id',)
+  //      ->get();
+
+      view()->share('ordonnances',$ordonnances);
+      view()->share('patient',$patient);
+      view()->share('docteur',$docteur);
+
+
+
+      if($request->has('download'))
+      {
+
+        $pdf = PDF::loadView('pdfviewordonnances');
+
+        return $pdf->download('Ordonnances.pdf');
+    //return dd($patient->nom);
+
+     }
+
+
+    return view('pdfview');
+
+    }
+
 
     public function pdfviewuneconsult(Request $request)
 
@@ -135,6 +177,49 @@ class ConsultationsController extends Controller
 
 
     return view('pdfviewuneconsult');
+
+    }
+
+    public function pdfviewuneordonnance(Request $request)
+
+    {
+
+      $userid =  \Auth::user()->id ;
+      $ord_id =$request->ord_id;
+      $patient = \App\Patient::findOrFail($request->patient_id);
+    //  $consultation = \App\Consultations::where('cons_id',$cons_id)->firstOrFail();
+
+    $docteur = \DB::table('docteurs')->where(function ($query) use ($userid) {
+        $query->where('users_id', '=', $userid);
+      })->get();
+
+
+    $ordonnance = \DB::table('ordonnances')->where(function ($query) use ($ord_id) {
+        $query->where('id', '=', $ord_id);
+      })->get();
+
+  //    $items = \DB::table("consultations")
+  //      ->where('cons_user_id',)
+  //      ->get();
+
+      view()->share('ordonnance',$ordonnance);
+      view()->share('patient',$patient);
+      view()->share('docteur',$docteur);
+
+
+
+      if($request->has('download'))
+      {
+
+      $pdf = PDF::loadView('pdfviewuneordonnance');
+
+        return $pdf->download('Ordonnance.pdf');
+    //return dd($patient->all());
+
+     }
+
+
+    return view('pdfviewuneordonnance');
 
     }
 

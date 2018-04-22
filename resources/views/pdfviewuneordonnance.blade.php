@@ -33,17 +33,6 @@ div.text-center {
 
 
 
-
-
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Google Font -->
-
-
-
 	<div class="container">
 		<div class="text-center">
 			<p><strong>Dr </strong>{{$docteur[0]->nom}} {{$docteur[0]->prenom}}</p>
@@ -51,7 +40,7 @@ div.text-center {
 			<p><strong>Tel Mobile : </strong>{{$docteur[0]->telmobile}}</p>
 			<p><strong>Adresse : </strong>{{$docteur[0]->addresse}}</p>
 			<br/>
-			<h3>Consultation du {{ Carbon\Carbon::parse($consultation[0]->created_at)->format('d-m-Y ') }}</h3>
+			<h3>Ordonnance du {{ Carbon\Carbon::parse($ordonnance[0]->created_at)->format('d-m-Y ') }}</h3>
 
 
 		</div>
@@ -72,15 +61,13 @@ div.text-center {
 
 				<div class="timeline-item">
 
-					<h2 class="timeline-header">{!!html_entity_decode($consultation[0]->titre)!!}</h2>
+					<h2 class="timeline-header">{!!html_entity_decode($ordonnance[0]->titre)!!}</h2>
 
 					<div class="timeline-body">
-						{!!html_entity_decode($consultation[0]->details_consultation)!!}
+						{!!html_entity_decode($ordonnance[0]->details_ordonnance)!!}
 
 					</div>
-					<div>
-						<strong>Tarif :</strong> {{$consultation[0]->tarif}}
-					</div>
+
 				</div>
 
 

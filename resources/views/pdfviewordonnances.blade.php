@@ -31,19 +31,6 @@ div.text-center {
 
 
 
-
-
-
-
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Google Font -->
-
-
-
 	<div class="container">
 		<div class="text-center">
 			<p><strong>Dr </strong>{{$docteur[0]->nom}} {{$docteur[0]->prenom}}</p>
@@ -51,11 +38,11 @@ div.text-center {
 			<p><strong>Tel Mobile : </strong>{{$docteur[0]->telmobile}}</p>
 			<p><strong>Adresse : </strong>{{$docteur[0]->addresse}}</p>
 			<br/>
-			<h3>Consultation du {{ Carbon\Carbon::parse($consultation[0]->created_at)->format('d-m-Y ') }}</h3>
-
+			<h3>Ordonnances</h3>
 
 		</div>
-	<br/>
+		<br/>
+
 		<div>
 			<p><strong>Nom : </strong>{{$patient->nom}}</p>
 			<p><strong>Prenom : </strong>{{$patient->prenom}}</p>
@@ -66,24 +53,41 @@ div.text-center {
 
 		<br/>
 
+		<hr>
 
+		<ul class="timeline timeline-inverse">
+			<!-- timeline time label -->
 
+			@foreach ( $ordonnances as $ordonnance)
+			<li class="time-label">
+						<span class="bg-red">
+							{{ Carbon\Carbon::parse($ordonnance->created_at)->format('d-M-Y ') }}
 
+						</span>
+			</li>
+			<!-- /.timeline-label -->
+			<!-- timeline item -->
+			<li>
+				<i class="fa fa-user bg-blue"></i>
 
 				<div class="timeline-item">
+					<span class="time"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($ordonnance->created_at)->format('H:i') }}</span>
 
-					<h2 class="timeline-header">{!!html_entity_decode($consultation[0]->titre)!!}</h2>
+					<h2 class="timeline-header">{!!html_entity_decode($ordonnance->titre)!!}</h2>
 
 					<div class="timeline-body">
-						{!!html_entity_decode($consultation[0]->details_consultation)!!}
+						{!!html_entity_decode($ordonnance->details_ordonnance)!!}
 
 					</div>
-					<div>
-						<strong>Tarif :</strong> {{$consultation[0]->tarif}}
-					</div>
+
 				</div>
+			</li>
+			<hr>
+			<!-- END timeline item -->
+			@endforeach
+			<!-- END timeline item -->
 
-
+		</ul>
 
 
 	</div>
