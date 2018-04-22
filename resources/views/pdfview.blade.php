@@ -37,13 +37,13 @@ div.text-center {
 			<p><strong>Tel Fixe : </strong>{{$docteur[0]->telfixe}}</p>
 			<p><strong>Tel Mobile : </strong>{{$docteur[0]->telmobile}}</p>
 			<p><strong>Adresse : </strong>{{$docteur[0]->addresse}}</p>
-
-
+			<br/>
+			<h3>Consultation du {{ Carbon\Carbon::parse($consultation[0]->created_at)->format('d-m-Y ') }}</h3>
+			
 		</div>
 		<br/>
 
 		<div>
-			<h1>Patient</h1>
 			<p><strong>Nom : </strong>{{$patient->nom}}</p>
 			<p><strong>Prenom : </strong>{{$patient->prenom}}</p>
 			<p><strong>Tel Fixe : </strong>{{$patient->telfixe}}</p>
