@@ -76,7 +76,7 @@ class EventController extends Controller
 
                 ])->setCallbacks([]);
                 //return dd($calendar);
-                return view('aevent', compact(['calendar'=>'$calendar'],['patients'=>'$patients']));
+                return view('aevent', compact('calendar','patients'));
 
                 //return view('aevent');
             }
