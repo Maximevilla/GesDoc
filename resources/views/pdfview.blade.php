@@ -38,8 +38,8 @@ div.text-center {
 			<p><strong>Tel Mobile : </strong>{{$docteur[0]->telmobile}}</p>
 			<p><strong>Adresse : </strong>{{$docteur[0]->addresse}}</p>
 			<br/>
-			<h3>Consultation du {{ Carbon\Carbon::parse($consultation[0]->created_at)->format('d-m-Y ') }}</h3>
-			
+			<h3>Consultations</h3>
+
 		</div>
 		<br/>
 
