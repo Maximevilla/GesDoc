@@ -24,7 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('admin',array('as'=>'admin.store','uses'=>'DocteursController@store'));
 
 
-
+    Route::get('pdfviewuneconsult',array('as'=>'pdfviewuneconsult','uses'=>'ConsultationsController@pdfviewuneconsult'));
   Route::get('pdfview',array('as'=>'pdfview','uses'=>'ConsultationsController@pdfview'));
   Route::get('ajoutgeneral', ['as' => 'ajoutgeneral', 'uses' => 'PatientsController@ajoutgeneral']);
 

@@ -59,6 +59,11 @@ class ConsultationsController extends Controller
       $userid =  \Auth::user()->id ;
       $patient = \App\Patient::findOrFail($request->patient_id);
 
+      $docteur = \DB::table('docteurs')->where(function ($query) use ($userid) {
+          $query->where('users_id', '=', $userid);
+        })->get();
+
+
       $consultations = \DB::table('consultations')->where(function ($query) use ($userid,$patient) {
         $query->where('cons_user_id', '=', $userid)
         ->where('cons_patient_id','=',$patient->id);
@@ -70,6 +75,7 @@ class ConsultationsController extends Controller
 
       view()->share('consultations',$consultations);
       view()->share('patient',$patient);
+      view()->share('docteur',$docteur);
 
 
 
@@ -87,6 +93,52 @@ class ConsultationsController extends Controller
     return view('pdfview');
 
     }
+
+
+    public function pdfviewuneconsult(Request $request)
+
+    {
+
+      $userid =  \Auth::user()->id ;
+      $cons_id =$request->consult_id;
+      $patient = \App\Patient::findOrFail($request->patient_id);
+    //  $consultation = \App\Consultations::where('cons_id',$cons_id)->firstOrFail();
+
+    $docteur = \DB::table('docteurs')->where(function ($query) use ($userid) {
+        $query->where('users_id', '=', $userid);
+      })->get();
+
+
+    $consultation = \DB::table('consultations')->where(function ($query) use ($cons_id) {
+        $query->where('cons_id', '=', $cons_id);
+      })->get();
+
+  //    $items = \DB::table("consultations")
+  //      ->where('cons_user_id',)
+  //      ->get();
+
+      view()->share('consultation',$consultation);
+      view()->share('patient',$patient);
+      view()->share('docteur',$docteur);
+
+
+
+      if($request->has('download'))
+      {
+
+      $pdf = PDF::loadView('pdfviewuneconsult');
+
+        return $pdf->download('Consultation.pdf');
+    //return dd($patient->all());
+
+     }
+
+
+    return view('pdfviewuneconsult');
+
+    }
+
+
     /**
      * Display the specified resource.
      *

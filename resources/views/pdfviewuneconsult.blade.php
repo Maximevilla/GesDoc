@@ -31,6 +31,19 @@ div.text-center {
 
 
 
+
+
+
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+
+
+
 	<div class="container">
 		<div class="text-center">
 			<p><strong>Dr </strong>{{$docteur[0]->nom}} {{$docteur[0]->prenom}}</p>
@@ -40,10 +53,9 @@ div.text-center {
 
 
 		</div>
-		<br/>
-
+	<br/>
 		<div>
-			<h1>Patient</h1>
+			<h3>Consultation du {{ Carbon\Carbon::parse($consultation[0]->created_at)->format('d-m-Y ') }}</h3>
 			<p><strong>Nom : </strong>{{$patient->nom}}</p>
 			<p><strong>Prenom : </strong>{{$patient->prenom}}</p>
 			<p><strong>Tel Fixe : </strong>{{$patient->telfixe}}</p>
@@ -53,41 +65,22 @@ div.text-center {
 
 		<br/>
 
-		<hr>
 
-		<ul class="timeline timeline-inverse">
-			<!-- timeline time label -->
 
-			@foreach ( $consultations as $consultation)
-			<li class="time-label">
-						<span class="bg-red">
-							{{ Carbon\Carbon::parse($consultation->created_at)->format('d-M-Y ') }}
 
-						</span>
-			</li>
-			<!-- /.timeline-label -->
-			<!-- timeline item -->
-			<li>
-				<i class="fa fa-user bg-blue"></i>
 
 				<div class="timeline-item">
-					<span class="time"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($consultation->created_at)->format('H:i') }}</span>
 
-					<h2 class="timeline-header">{!!html_entity_decode($consultation->titre)!!}</h2>
+					<h2 class="timeline-header">{!!html_entity_decode($consultation[0]->titre)!!}</h2>
 
 					<div class="timeline-body">
-						{!!html_entity_decode($consultation->details_consultation)!!}
+						{!!html_entity_decode($consultation[0]->details_consultation)!!}
 
 					</div>
 
 				</div>
-			</li>
-			<hr>
-			<!-- END timeline item -->
-			@endforeach
-			<!-- END timeline item -->
 
-		</ul>
+
 
 
 	</div>

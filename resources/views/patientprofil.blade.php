@@ -146,10 +146,10 @@
                      <div class="timeline-body">
                        {!!html_entity_decode($consultation->details_consultation)!!}
 
-                       <span class="time"><i class="fa  fa-money"></i> <strong>Tarif : </strong></span>
+                       <span class="time"><i class="fa  fa-money"></i> <strong>Tarif : {{$consultation->tarif}}</strong></span>
                      </div>
                      <div class="timeline-footer">
-                         <a class="btn btn-primary btn-xs">Imprimer</a>
+                         <a href="{{ route('pdfviewuneconsult',['download'=>'pdf','consult_id'=>$consultation->cons_id,'patient_id'=>$patient->id]) }}" class="btn btn-primary btn-xs">Imprimer</a>
                          <a class="btn btn-danger btn-xs">Effacer</a>
                        </div>
 
@@ -360,7 +360,7 @@
                    </div>
                    <div class="form-group">
                      <label class="control-label" for="tarif">Tarif</label>
-                     <input class="form-control" id="tarif" name="tarif" type="number" step="0.01" />
+                     <input class="form-control" id="tarif" name="tarif" type="number" step="0.10" />
                    </div>
 
                    <div class="form-group">
