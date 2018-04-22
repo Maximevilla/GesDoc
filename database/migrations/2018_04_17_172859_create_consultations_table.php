@@ -16,7 +16,7 @@ class CreateConsultationsTable extends Migration
         Schema::create('consultations', function (Blueprint $table) {
             $table->increments('cons_id');
             $table->integer('cons_patient_id')->unsigned();
-            $table->integer('tarif')->unsigned()->default(0);
+            $table->float('tarif')->unsigned()->default(0);
             $table->integer('cons_user_id')->unsigned();
             $table->longText('details_consultation')->nullable();
             $table->string('titre')->nullable();
