@@ -23,6 +23,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/openmedica', function() {
     return redirect()->to('https://www.open-medicaments.fr/');
 });
+
+Route::get('/amelipro', function() {
+return redirect()->to('https://espacepro.ameli.fr');
+});
   //  Route::resource('medica','MedicamentsController');
     Route::get('aevent','EventController@aevent');
     Route::get('admin',array('as'=>'admin','uses'=>'DocteursController@index'));
