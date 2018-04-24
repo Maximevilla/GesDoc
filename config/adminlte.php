@@ -108,7 +108,7 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        'Menu',
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
@@ -167,6 +167,7 @@ return [
             //'label'       => 4,
             //'label_color' => 'success',
         ],
+        'Liens externes',
         [
             'text'        => 'Medicaments',
             'url'         => 'openmedica',
@@ -175,9 +176,17 @@ return [
             //'label'       => 4,
             //'label_color' => 'success',
         ],
-        'ACCOUNT SETTINGS',
         [
-            'text' => 'Profile',
+            'text'        => 'AmeliPro',
+            'url'         => 'amelipro',
+            'icon'        => 'medkit',
+            'target' => '_blank'
+            //'label'       => 4,
+            //'label_color' => 'success',
+        ],
+        'Parametres du compte',
+        [
+            'text' => 'Profil',
             'url'  => 'admin/settings',
             'icon' => 'user',
         ],
