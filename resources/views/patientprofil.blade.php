@@ -106,7 +106,7 @@
              <li><a href="#nvlconsult" data-toggle="tab">Nvlle Consultation</a></li>
              <li><a href="#nvlordonnance" data-toggle="tab">Nvlle Ordonnance</a></li>
              <li><a href="#documents" data-toggle="tab">Documents</a></li>
-             <li><a href="#central" data-toggle="tab">Central</a></li>
+             <li><a href="#plus" data-toggle="tab">Plus</a></li>
 
 
            </ul>
@@ -229,42 +229,70 @@
              <!-- /.tab-pane -->
 
 
-             <div class="tab-pane" id="central">
+             <div class="tab-pane" id="plus">
                <!-- Post -->
                <div class="row">
-                   <div class="col-md-3 col-sm-6 col-xs-12">
-                     <div class="info-box">
-                       <span class="info-box-icon bg-aqua"><i class="ion ion-person-stalker"></i></span>
+                   <div class="col-md-6 col-sm-6 col-xs-12">
 
-                       <div class="info-box-content">
-                         <span class="info-box-text">Facture</span>
-                         <span class="info-box-number">20<small></small></span>
-                       </div>
-                       <!-- /.info-box-content -->
-                     </div>
 
-                     <div class="info-box">
-                       <span class="info-box-icon bg-aqua"><i class="ion ion-person-add"></i></span>
-
-                       <div class="info-box-content">
-                         <span class="info-box-text">Devis</span>
-                         <span class="info-box-number">0<small></small></span>
-                       </div>
-                       <!-- /.info-box-content -->
-                     </div>
-
-                     <div class="info-box">
-                       <span class="info-box-icon bg-aqua"><i class="ion ion-person-add"></i></span>
-
-                       <div class="info-box-content">
-                         <span class="info-box-text">Consentements</span>
-                         <span class="info-box-number">0<small></small></span>
-                       </div>
-                       <!-- /.info-box-content -->
-                     </div>
-
-                     <!-- /.info-box -->
+                     <div class="box box-default collapsed-box">
+                       <div class="box-header with-border">
+                         <h3 class="box-title">Devis</h3>
+                         <div class="box-tools pull-right">
+                           <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                         </div><!-- /.box-tools -->
+                       </div><!-- /.box-header -->
+                       <div class="box-body">
+                         The body of the box
+                       </div><!-- /.box-body -->
+                     </div><!-- /.box -->
                    </div>
+
+                   <div class="col-md-6 col-sm-6 col-xs-12">
+                     <div class="box box-default collapsed-box">
+                       <div class="box-header with-border">
+                         <h3 class="box-title">Factures</h3>
+                         <div class="box-tools pull-right">
+                           <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                         </div><!-- /.box-tools -->
+                       </div><!-- /.box-header -->
+                       <div class="box-body">
+                         The body of the box
+                       </div><!-- /.box-body -->
+                     </div><!-- /.box -->
+
+                   </div>
+
+                   <div class="col-md-6 col-sm-6 col-xs-12">
+                     <div class="box box-default collapsed-box">
+                       <div class="box-header with-border">
+                         <h3 class="box-title">Consentements</h3>
+                         <div class="box-tools pull-right">
+                           <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                         </div><!-- /.box-tools -->
+                       </div><!-- /.box-header -->
+                       <div class="box-body">
+                         The body of the box
+                       </div><!-- /.box-body -->
+                     </div><!-- /.box -->
+
+                   </div>
+
+                   <div class="col-md-6 col-sm-6 col-xs-12">
+                     <div class="box box-default collapsed-box">
+                       <div class="box-header with-border">
+                         <h3 class="box-title">Demandes d'agrement prealable</h3>
+                         <div class="box-tools pull-right">
+                           <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                         </div><!-- /.box-tools -->
+                       </div><!-- /.box-header -->
+                       <div class="box-body">
+                         The body of the box
+                       </div><!-- /.box-body -->
+                     </div><!-- /.box -->
+
+                   </div>
+
                </div>
 
                <!-- /.post -->
