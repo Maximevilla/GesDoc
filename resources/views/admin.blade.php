@@ -45,8 +45,8 @@
             <span class="info-box-icon bg-aqua"><i class="ion ion-person-stalker"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Patients du jour</span>
-              <span class="info-box-number">20<small></small></span>
+              <span class="info-box-text">Aujourd'hui</span>
+              <span class="info-box-number">{{$patientsjour}} <small>Patients</small></span>
             </div>
             <!-- /.info-box-content -->
           </div>
