@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class DocteursController extends Controller
 {
@@ -26,10 +27,14 @@ class DocteursController extends Controller
           return view('creadocteur');
         }
         else{
+          $fromDate = Carbon::today();
+          $toDate = Carbon::tomorrow();
+
+          $patientsjour =\App\Event::where('eve_user_id',$userid) ->whereBetween('created_at', array($fromDate->toDateTimeString(), $toDate->toDateTimeString()) )->count();
 
 
 
-          return view('admin', compact('docteur'));
+          return view('admin', compact('docteur','patientsjour'));
          //dd($docteur);
         }
 
