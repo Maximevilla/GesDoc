@@ -167,6 +167,14 @@ return [
             //'label'       => 4,
             //'label_color' => 'success',
         ],
+        [
+            'text'        => 'Medicaments',
+            'url'         => 'openmedica',
+            'icon'        => 'medkit',
+            'target' => '_blank'
+            //'label'       => 4,
+            //'label_color' => 'success',
+        ],
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',

@@ -64,10 +64,13 @@
     <!-- ChartJS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
 @endif
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 
 
 <script type="text/javascript">
 $( document ).ready(function() {
+
+
   //Date range picker
     $('#reservation').daterangepicker()
     //Date range picker with time picker

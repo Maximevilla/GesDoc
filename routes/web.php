@@ -19,6 +19,11 @@ Route::middleware(['auth'])->group(function () {
   //Route::get('/admin', function () {
     //   return view('admin');});
 
+
+    Route::get('/openmedica', function() {
+    return redirect()->to('https://www.open-medicaments.fr/');
+});
+  //  Route::resource('medica','MedicamentsController');
     Route::get('aevent','EventController@aevent');
     Route::get('admin',array('as'=>'admin','uses'=>'DocteursController@index'));
     Route::post('admin',array('as'=>'admin.store','uses'=>'DocteursController@store'));
