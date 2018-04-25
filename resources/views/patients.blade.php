@@ -19,12 +19,20 @@
                 <!-- /.box-header -->
                 <div class="box-body" style="display: none;">
                   <button class="btn" data-toggle="modal" data-target="#ModalAjout">Ajouter</button>
-                </div>
+                  <a href="{{ route('patients.excel') }}"><button class="btn btn-primary" >Excel</button></a>
+
+              </div>
+
+
+
                 <!-- /.box-body -->
               </div>
+
               <!-- /.box -->
             </div>
             <!-- /.col -->
+            <div class="col-md-3">
+            </div>
             <div class="col-md-3">
 
               <!-- /.box -->

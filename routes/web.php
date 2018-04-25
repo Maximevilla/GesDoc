@@ -20,6 +20,39 @@ Route::middleware(['auth'])->group(function () {
     //   return view('admin');});
 
 
+Route::resource('chiffreaffaires', 'ChiffreaffairesController');
+    Route::get('/payments/excel',
+    [
+      'as' => 'patients.excel',
+      'uses' => 'PatientsController@excel'
+    ]);
+    Route::get('/chiffreaffaires/exceltout',
+    [
+      'as' => 'chiffreaffaires.exceltout',
+      'uses' => 'ChiffreaffairesController@exceltout'
+    ]);
+    Route::get('/chiffreaffairesannee',
+    [
+      'as' => 'chiffreaffairesannee',
+      'uses' => 'ChiffreaffairesController@indexannee'
+    ]);
+    Route::get('/chiffreaffairesmois',
+    [
+      'as' => 'chiffreaffairesmois',
+      'uses' => 'ChiffreaffairesController@indexmois'
+    ]);
+    Route::get('/chiffreaffairessemaine',
+    [
+      'as' => 'chiffreaffairessemaine',
+      'uses' => 'ChiffreaffairesController@indexsemaine'
+    ]);
+    Route::get('/chiffreaffairesjour',
+    [
+      'as' => 'chiffreaffairesjour',
+      'uses' => 'ChiffreaffairesController@indexjour'
+    ]);
+
+
     Route::get('/openmedica', function() {
     return redirect()->to('https://www.open-medicaments.fr/');
 });
@@ -50,6 +83,7 @@ return redirect()->to('https://espacepro.ameli.fr');
    Route::resource('events', 'EventController');
 
     Route::resource('document', 'DocumentController');
+
 
 
 

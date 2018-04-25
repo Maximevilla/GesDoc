@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Excel;
+use App\Exports\PatientsExport;
+
 
 class PatientsController extends Controller
 {
@@ -11,6 +14,17 @@ class PatientsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function excel()
+     {
+
+       return Excel::download(new PatientsExport, 'Patients.xlsx');
+
+
+
+     }
+
+
     public function index()
     {
         $userid =  \Auth::user()->id ;

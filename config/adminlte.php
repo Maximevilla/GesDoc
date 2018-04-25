@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
 
     'logout_url' => 'logout',
 
@@ -155,7 +155,7 @@ return [
             ],
         [
             'text'        => 'Chiffre D\'Affaires',
-            'url'         => 'admin',
+            'url'         => 'chiffreaffaires',
             'icon'        => 'money',
             //'label'       => 4,
             //'label_color' => 'success',
