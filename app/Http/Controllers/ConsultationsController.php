@@ -47,6 +47,7 @@ class ConsultationsController extends Controller
     public function store(Request $request)
     {
         //
+        activity()->log('Created new Consultation');
         \App\Consultations::create($request->all());
         return back();
     }
@@ -78,7 +79,7 @@ class ConsultationsController extends Controller
       view()->share('docteur',$docteur);
 
 
-
+      activity()->log('Using pdfview');
       if($request->has('download'))
       {
 
@@ -120,7 +121,7 @@ class ConsultationsController extends Controller
       view()->share('docteur',$docteur);
 
 
-
+      activity()->log('Using pdfviewordonnaces');
       if($request->has('download'))
       {
 
@@ -164,7 +165,7 @@ class ConsultationsController extends Controller
       view()->share('docteur',$docteur);
 
 
-
+      activity()->log('Using pdfviewconsultations');
       if($request->has('download'))
       {
 
@@ -206,7 +207,7 @@ class ConsultationsController extends Controller
       view()->share('patient',$patient);
       view()->share('docteur',$docteur);
 
-
+      activity()->log('Using pdfviewordonnace');
 
       if($request->has('download'))
       {

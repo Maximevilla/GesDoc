@@ -49,6 +49,7 @@ class PatientsController extends Controller
     public function store(Request $request)
     {
       //
+      activity()->log('Created new patient');
         \App\Patient::create($request->all());
         return back();
     }
@@ -106,7 +107,7 @@ class PatientsController extends Controller
         if ($patient){
           $patient->update($request->all());
         }
-
+        activity()->log('Updated patient');
         return back();
       //  dd($request->all());
     }
@@ -123,6 +124,7 @@ class PatientsController extends Controller
         // delete
         //$patient = \App\Patient::find($id);
       //  \App\Patient::delete($id);
+      activity()->log('Destroyed patient');
         $file = \App\Patient::where('id', $id)->first(); // File::find($id)
 
         if($file) {

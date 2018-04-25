@@ -24,6 +24,7 @@ class DocteursController extends Controller
       $docteur= \App\Docteur::where('users_id', '=', $userid)->first();
         if ($docteur === null) {
           // user doesn't exist
+          activity()->log('User login witout docteur');
           return view('creadocteur');
         }
         else{
@@ -33,7 +34,7 @@ class DocteursController extends Controller
           $patientsjour =\App\Event::where('eve_user_id',$userid) ->whereBetween('created_at', array($fromDate->toDateTimeString(), $toDate->toDateTimeString()) )->count();
 
 
-
+          activity()->log('User login with docteur');
           return view('admin', compact('docteur','patientsjour'));
          //dd($docteur);
         }

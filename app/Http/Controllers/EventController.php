@@ -28,6 +28,7 @@ class EventController extends Controller
         $newevent->eve_user_id= $userid;
 
         $newevent->save();
+        activity()->log('Created new event');
         //\App\Event::create($request->all());
         return back();
         //dd($newevent);

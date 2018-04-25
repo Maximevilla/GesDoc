@@ -35,6 +35,7 @@ class OrdonnancesController extends Controller
     public function store(Request $request)
     {
         //
+        activity()->log('Created new ordonnance');
         \App\Ordonnance::create($request->all());
         return back();
     }

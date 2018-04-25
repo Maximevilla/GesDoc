@@ -14,6 +14,7 @@ class CalendarController extends Controller
     public function index()
     {
         //
+        activity()->log('Return view calendar');
         return view('calendar');
     }
 

@@ -32,6 +32,7 @@ class HomeController extends Controller
     $docteur= \App\Docteur::where('users_id', '=', $userid)->first();
       if ($docteur === null) {
         // user doesn't exist
+        activity()->log('Creation new docteur');
         return view('creadocteur');
       }
       else{
@@ -41,7 +42,7 @@ class HomeController extends Controller
 
         $patientsjour =\App\Event::where('eve_user_id',$userid) ->whereBetween('created_at', array($fromDate->toDateTimeString(), $toDate->toDateTimeString()) )->count();
 
-
+        activity()->log('Opened admin page');
 
         return view('admin', compact('docteur','patientsjour'));
        //dd($patientsjour);
