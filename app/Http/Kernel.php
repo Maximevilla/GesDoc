@@ -43,6 +43,12 @@ class Kernel extends HttpKernel
         ],
     ];
 
+    protected function schedule(Schedule $schedule)
+{
+   $schedule->command('backup:clean')->daily()->at('01:00');
+   $schedule->command('backup:run')->daily()->at('02:00');
+}
+
     /**
      * The application's route middleware.
      *
