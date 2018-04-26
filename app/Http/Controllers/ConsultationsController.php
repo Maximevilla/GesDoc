@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use PDF;
+use Input;
 
 class ConsultationsController extends Controller
 {
@@ -15,17 +16,17 @@ class ConsultationsController extends Controller
     public function index()
     {
         //
-        //$userid =  \Auth::user()->id ;
+        $userid =  \Auth::user()->id ;
 
-      //  $patients = \DB::table('patients')->where(function ($query) use ($userid) {
-      //    $query->where('users_id', '=', $userid);
-      //  })->get();
+        $patients = \DB::table('patients')->where(function ($query) use ($userid) {
+         $query->where('users_id', '=', $userid);
+        })->get();
 
-      //  $consultations = \DB::table('consultations')->where(function ($query) use ($userid) {
-      //    $query->where('users_id', '=', $userid);
-      //  })->get();
+        $consultations = \DB::table('consultations')->where(function ($query) use ($userid) {
+          $query->where('users_id', '=', $userid);
+       })->get();
 
-      //  return view('patients', compact('patients','consultations'));
+       return view('patients', compact('patients','consultations'));
     }
 
     /**
@@ -47,9 +48,15 @@ class ConsultationsController extends Controller
     public function store(Request $request)
     {
         //
-        activity()->log('Created new Consultation');
-        \App\Consultations::create($request->all());
-        return back();
+        //activity()->log('Created new Consultation');
+        $consultation = \App\Consultations::create($request->all());
+        $insertedid = $consultation->id;
+        \Request::merge(['ord_consult_id' => $insertedid]);
+
+
+       \App\Ordonnance::create($request->all());
+       return back();
+      //return dd($request);
     }
 
 
@@ -153,7 +160,7 @@ class ConsultationsController extends Controller
 
 
     $consultation = \DB::table('consultations')->where(function ($query) use ($cons_id) {
-        $query->where('cons_id', '=', $cons_id);
+        $query->where('id', '=', $cons_id);
       })->get();
 
   //    $items = \DB::table("consultations")

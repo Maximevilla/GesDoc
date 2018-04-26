@@ -14,12 +14,12 @@ class CreateConsultationsTable extends Migration
     public function up()
     {
         Schema::create('consultations', function (Blueprint $table) {
-            $table->increments('cons_id');
+            $table->increments('id');
             $table->integer('cons_patient_id')->unsigned();
             $table->float('tarif')->unsigned()->default(0);
             $table->integer('cons_user_id')->unsigned();
             $table->longText('details_consultation')->nullable();
-            $table->string('titre')->nullable();
+            $table->string('titre_cons')->nullable();
             $table->foreign('cons_user_id')->references('id')->on('users');
             $table->foreign('cons_patient_id')->references('id')->on('patients');
             $table->timestamps();

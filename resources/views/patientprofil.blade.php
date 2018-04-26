@@ -104,7 +104,6 @@
              <li class="active"><a href="#consultations" data-toggle="tab">Consultations</a></li>
              <li><a href="#ordonnances" data-toggle="tab">Ordonnances</a></li>
              <li><a href="#nvlconsult" data-toggle="tab">Nvlle Consultation</a></li>
-             <li><a href="#nvlordonnance" data-toggle="tab">Nvlle Ordonnance</a></li>
              <li><a href="#documents" data-toggle="tab">Documents</a></li>
              <li><a href="#plus" data-toggle="tab">Plus</a></li>
 
@@ -123,7 +122,7 @@
                <hr>
                </div>
                <!-- The timeline -->
-               <ul class="timeline timeline-inverse">
+               <ul class="timeline">
                  <!-- timeline time label -->
 
                  @foreach ( $consultations as $consultation)
@@ -137,29 +136,42 @@
                  <!-- timeline item -->
                  <li>
                    <i class="fa fa-user bg-blue"></i>
-
                    <div class="timeline-item">
-                     <span class="time"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($consultation->created_at)->format('H:i') }}</span>
+                   <div class=" box box-default collapsed-box">
+                     <div class="box-header with-border">
+                       <h3 class="box-title">Consultation : {!!html_entity_decode($consultation->titre_cons)!!}</h3>
 
-                     <h2 class="timeline-header">{!!html_entity_decode($consultation->titre)!!}</h2>
-
-                     <div class="timeline-body">
-                       {!!html_entity_decode($consultation->details_consultation)!!}
-
-                       <span class="time"><i class="fa  fa-money"></i> <strong>Tarif : {{$consultation->tarif}}</strong></span>
-                     </div>
-                     <div class="timeline-footer">
-                         <a href="{{ route('pdfviewuneconsult',['download'=>'pdf','consult_id'=>$consultation->cons_id,'patient_id'=>$patient->id]) }}" class="btn btn-primary btn-xs">PDF</a>
-                         <a class="btn btn-danger btn-xs">Effacer</a>
+                       <div class="box-tools pull-right">
+                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                         </button>
                        </div>
+                       <!-- /.box-tools -->
+                     </div>
+                     <!-- /.box-header -->
+                     <div class="box-body">
+                       <div class="timeline-item">
+                         <span class="time"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($consultation->created_at)->format('H:i') }}</span>
 
+                         <div class="timeline-body">
+                           {!!html_entity_decode($consultation->details_consultation)!!}
+
+                           <span class="time"><i class="fa  fa-money"></i> <strong>Tarif : {{$consultation->tarif}}</strong></span>
+                         </div>
+                         <div class="timeline-footer">
+                           <a href="{{ route('pdfviewuneconsult',['download'=>'pdf','consult_id'=>$consultation->id,'patient_id'=>$patient->id]) }}" class="btn btn-primary btn-xs">PDF</a>
+                           <a class="btn btn-danger btn-xs">Effacer</a>
+                         </div>
+
+                       </div>
+                     </div>
+                     <!-- /.box-body -->
                    </div>
-
-
+                 </div>
                  </li>
                  <!-- END timeline item -->
                  @endforeach
                  <!-- END timeline item -->
+
                  <li>
                    <i class="fa fa-clock-o bg-gray"></i>
                  </li>
@@ -196,18 +208,36 @@
                    <i class="fa fa-envelope-o bg-blue"></i>
 
                    <div class="timeline-item">
-                     <span class="time"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($ordonnance->created_at)->format('H:i') }}</span>
+                     <div class="box box-default collapsed-box">
+                       <div class="box-header with-border">
+                         <h3 class="box-title">{!!html_entity_decode($ordonnance->titre)!!}</h3>
 
-                     <h2 class="timeline-header">{!!html_entity_decode($ordonnance->titre)!!}</h2>
+                         <div class="box-tools pull-right">
+                           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                           </button>
+                         </div>
+                         <!-- /.box-tools -->
+                       </div>
+                       <!-- /.box-header -->
+                       <div class="box-body">
+                         <span class="time"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($ordonnance->created_at)->format('H:i') }}</span>
 
-                     <div class="timeline-body">
-                       {!!html_entity_decode($ordonnance->details_ordonnance)!!}
+                         <div class="timeline-body">
+                           {!!html_entity_decode($ordonnance->details_ordonnance)!!}
 
+                         </div>
+                       <div class="timeline-footer">
+                           <a href="{{ route('pdfviewuneordonnance',['download'=>'pdf','ord_id'=>$ordonnance->id,'patient_id'=>$patient->id]) }}" class="btn btn-primary btn-xs">PDF</a>
+                           <a class="btn btn-danger btn-xs">Effacer</a>
+                         </div>
+                       </div>
+                       <!-- /.box-body -->
                      </div>
-                   <div class="timeline-footer">
-                       <a href="{{ route('pdfviewuneordonnance',['download'=>'pdf','ord_id'=>$ordonnance->id,'patient_id'=>$patient->id]) }}" class="btn btn-primary btn-xs">PDF</a>
-                       <a class="btn btn-danger btn-xs">Effacer</a>
-                     </div>
+
+
+
+
+
                    </div>
                  </li>
                  <!-- END timeline item -->
@@ -307,74 +337,31 @@
 
 <!-- Nouvelle Ordonnance-->
 
-<div class="tab-pane" id="nvlordonnance">
-  <form class="form-horizontal" action="{{ route('ordonnances.store') }}" method="post">
-    {{ csrf_field() }}
-    <div class="box-body">
-      <div class="form-group">
-        <strong><i class="fa  fa-clock-o margin-r-5"></i> Date : </strong>
-         {{$mytime = Carbon\Carbon::now()}}
-      </div>
 
-      <div class="form-group">
-        <input class="form-control" id="cons_patient_id" name="ord_patient_id" type="hidden" value="{{$patient->id}}">
-      </div>
-      <div class="form-group">
-        <input class="form-control" id="cons_user_id" name="ord_user_id" type="hidden" value="{{\Auth::user()->id}}">
-      </div>
-      <div class="form-group">
-        <label class="control-label" for="titre">Titre</label>
-        <input class="form-control" id="titre" name="titre" type="text" />
-      </div>
-
-      <div class="form-group">
-        <textarea id="my-editor" name="details_ordonnance" style="height: 300px" class="form-control">
-
-          <h1><u>Ordonnance</u></h1>
-          <h4>SousTete</h4>
-          <p>Blablablabalb blabla balbalbalbal</p>
-          <ul>
-            <li>Liste element un</li>
-            <li>Liste element deux</li>
-            <li>Liste element trois</li>
-
-          </ul>
-          <p>Merci,</p>
-          <p>John Doe</p>
-
-        </textarea>
-        <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-        <script>
-        var options = {
-          filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-          filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-          filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-          filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
-        };
-        </script>
-
-
-      </div>
-
-    </div>
-    <div class="box-footer">
-      <div class="pull-right">
-        <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Valider</button>
-      </div>
-
-    </div>
-  </form>
-</div>
 
 <!-- Nouvelle Consultation-->
              <div class="tab-pane" id="nvlconsult">
                <form class="form-horizontal" action="{{ route('consultations.store') }}" method="post">
                  {{ csrf_field() }}
+
+
+          <div class="box box-default collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Details Consultation</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                </button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
                  <div class="box-body">
+
                    <div class="form-group">
                      <strong><i class="fa  fa-clock-o margin-r-5"></i> Date : </strong>
                       {{$mytime = Carbon\Carbon::now()}}
                    </div>
+
 
                    <div class="form-group">
                      <input class="form-control" id="cons_patient_id" name="cons_patient_id" type="hidden" value="{{$patient->id}}">
@@ -383,8 +370,11 @@
                      <input class="form-control" id="cons_user_id" name="cons_user_id" type="hidden" value="{{\Auth::user()->id}}">
                    </div>
                    <div class="form-group">
-                     <label class="control-label" for="titre">Titre</label>
-                     <input class="form-control" id="titre" name="titre" type="text" />
+                     <input class="form-control" id="ord_consult_id" name="ord_consult_id" type="hidden" value="">
+                   </div>
+                   <div class="form-group">
+                     <label class="control-label" for="titre">Motif</label>
+                     <input class="form-control" id="titre_cons" name="titre_cons" type="text" />
                    </div>
                    <div class="form-group">
                      <label class="control-label" for="tarif">Tarif</label>
@@ -421,6 +411,70 @@
                    </div>
 
                  </div>
+               </div>
+               <div class="box box-default collapsed-box">
+                 <div class="box-header with-border">
+                   <h3 class="box-title">Nouvelle Ordonnance</h3>
+
+                   <div class="box-tools pull-right">
+                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                     </button>
+                   </div>
+                   <!-- /.box-tools -->
+                 </div>
+                 <div  id="nvlordonnance">
+
+                     <div class="box-body">
+                       <div class="form-group">
+                         <strong><i class="fa  fa-clock-o margin-r-5"></i> Date : </strong>
+                          {{$mytime = Carbon\Carbon::now()}}
+                       </div>
+
+                       <div class="form-group">
+                         <input class="form-control" id="cons_patient_id" name="ord_patient_id" type="hidden" value="{{$patient->id}}">
+                       </div>
+                       <div class="form-group">
+                         <input class="form-control" id="cons_user_id" name="ord_user_id" type="hidden" value="{{\Auth::user()->id}}">
+                       </div>
+                       <div class="form-group">
+                         <label class="control-label" for="titre">Titre</label>
+                         <input class="form-control" id="titre" name="titre" type="text" />
+                       </div>
+
+                       <div class="form-group">
+                         <textarea id="my-editor" name="details_ordonnance" style="height: 300px" class="form-control">
+
+                           <h1><u>Ordonnance</u></h1>
+                           <h4>SousTete</h4>
+                           <p>Blablablabalb blabla balbalbalbal</p>
+                           <ul>
+                             <li>Liste element un</li>
+                             <li>Liste element deux</li>
+                             <li>Liste element trois</li>
+
+                           </ul>
+                           <p>Merci,</p>
+                           <p>John Doe</p>
+
+                         </textarea>
+                         <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+                         <script>
+                         var options = {
+                           filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                           filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+                           filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                           filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+                         };
+                         </script>
+
+
+                       </div>
+
+                     </div>
+
+                 </div>
+               </div>
+
                  <div class="box-footer">
                    <div class="pull-right">
                      <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Valider</button>
