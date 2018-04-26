@@ -16,7 +16,7 @@ class ChiffreaffairesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function exceltout()
+     public function excelparjour()
      {
 
        return Excel::download(new caExportTout, 'CATotal.xlsx');
@@ -25,101 +25,27 @@ class ChiffreaffairesController extends Controller
 
      }
 
-     public function indexjour()
-     {
-         $userid =  \Auth::user()->id ;
-
-         $consultations = \DB::table('consultations')
-         ->where(function ($query) use ($userid) {
-           $query->where('cons_user_id', '=', $userid);
-         })
-         ->join('patients', 'consultations.cons_patient_id', '=', 'patients.id')
-         ->select('patients.nom', 'patients.prenom', 'consultations.titre','consultations.tarif','consultations.created_at')
-         ->whereDay('consultations.created_at', '=', date('d'))
-         ->get();
-
-
-
-
-         return view('chiffreaffaires', compact('consultations'));
-       //  dd($ca);
-     }
-
-     public function indexsemaine()
-     {
-         $userid =  \Auth::user()->id ;
-
-         $consultations = \DB::table('consultations')
-         ->where(function ($query) use ($userid) {
-           $query->where('cons_user_id', '=', $userid);
-         })
-         ->join('patients', 'consultations.cons_patient_id', '=', 'patients.id')
-         ->select('patients.nom', 'patients.prenom', 'consultations.titre','consultations.tarif','consultations.created_at')
-         ->whereBetween('consultations.created_at', [
-           Carbon\Carbon::parse('last monday')->startOfDay(),
-           Carbon\Carbon::parse('next friday')->endOfDay(),
-         ])
-         ->get();
-
-
-
-
-         return view('chiffreaffaires', compact('consultations'));
-       //  dd($ca);
-     }
-
-     public function indexmois()
-     {
-         $userid =  \Auth::user()->id ;
-
-         $consultations = \DB::table('consultations')
-         ->where(function ($query) use ($userid) {
-           $query->where('cons_user_id', '=', $userid);
-         })
-         ->join('patients', 'consultations.cons_patient_id', '=', 'patients.id')
-         ->select('patients.nom', 'patients.prenom', 'consultations.titre','consultations.tarif','consultations.created_at')
-         ->whereMonth('consultations.created_at', '=', date('m'))
-         ->get();
-
-
-
-
-         return view('chiffreaffaires', compact('consultations'));
-       //  dd($ca);
-     }
-
-
-     public function indexannee()
-     {
-         $userid =  \Auth::user()->id ;
-
-         $consultations = \DB::table('consultations')
-         ->where(function ($query) use ($userid) {
-           $query->where('cons_user_id', '=', $userid);
-         })
-         ->join('patients', 'consultations.cons_patient_id', '=', 'patients.id')
-         ->select('patients.nom', 'patients.prenom', 'consultations.titre','consultations.tarif','consultations.created_at')
-         ->whereYear('consultations.created_at', '=', date('Y'))
-         ->get();
-
-
-
-
-         return view('chiffreaffaires', compact('consultations'));
-       //  dd($ca);
-     }
 
     public function index()
     {
         $userid =  \Auth::user()->id ;
+
+        $consultationsjour = \DB::table('consultations')
+        ->where(function ($query) use ($userid) {
+          $query->where('cons_user_id', '=', $userid);
+        })
+        ->join('patients', 'consultations.cons_patient_id', '=', 'patients.id')
+        ->select(\DB::raw("CONCAT_WS('-',DAY(consultations.created_at),MONTH(consultations.created_at),YEAR(consultations.created_at)) as daymonthyear"),\DB::Raw('sum(consultations.tarif) as Sum'))
+        ->groupBy('daymonthyear')
+        ->get();
 
         $consultationsmois = \DB::table('consultations')
         ->where(function ($query) use ($userid) {
           $query->where('cons_user_id', '=', $userid);
         })
         ->join('patients', 'consultations.cons_patient_id', '=', 'patients.id')
-        ->select(\DB::raw('MONTH(consultations.created_at) as mois'),\DB::Raw('sum(consultations.tarif) as Sum'))
-        ->groupBy('mois') // grouping by years
+        ->select(\DB::raw("CONCAT_WS('-',MONTH(consultations.created_at),YEAR(consultations.created_at)) as monthyear"),\DB::Raw('sum(consultations.tarif) as Sum'))
+        ->groupBy('monthyear') // grouping by years
         //return Carbon::parse($date->created_at)->format('m'); // grouping by months
         ->get();
 
@@ -136,8 +62,8 @@ class ChiffreaffairesController extends Controller
 
 
 
-        return view('chiffreaffaires', compact('consultations','consultationsmois'));
-        //dd($consultations);
+        return view('chiffreaffaires', compact('consultations','consultationsmois','consultationsjour'));
+        //dd($consultationsjour);
     }
 
     /**

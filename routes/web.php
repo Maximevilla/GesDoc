@@ -26,31 +26,15 @@ Route::resource('chiffreaffaires', 'ChiffreaffairesController');
       'as' => 'patients.excel',
       'uses' => 'PatientsController@excel'
     ]);
-    Route::get('/chiffreaffaires/exceltout',
+    Route::get('/chiffreaffaires/parjour',
     [
-      'as' => 'chiffreaffaires.exceltout',
-      'uses' => 'ChiffreaffairesController@exceltout'
+      'as' => 'chiffreaffaires.excelparjour',
+      'uses' => 'ChiffreaffairesController@excelparjour'
     ]);
-    Route::get('/chiffreaffairesannee',
-    [
-      'as' => 'chiffreaffairesannee',
-      'uses' => 'ChiffreaffairesController@indexannee'
-    ]);
-    Route::get('/chiffreaffairesmois',
-    [
-      'as' => 'chiffreaffairesmois',
-      'uses' => 'ChiffreaffairesController@indexmois'
-    ]);
-    Route::get('/chiffreaffairessemaine',
-    [
-      'as' => 'chiffreaffairessemaine',
-      'uses' => 'ChiffreaffairesController@indexsemaine'
-    ]);
-    Route::get('/chiffreaffairesjour',
-    [
-      'as' => 'chiffreaffairesjour',
-      'uses' => 'ChiffreaffairesController@indexjour'
-    ]);
+
+
+
+
 
 
     Route::get('/openmedica', function() {
