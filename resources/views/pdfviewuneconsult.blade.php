@@ -72,7 +72,7 @@ div.text-center {
 
 				<div class="timeline-item">
 
-					<h2 class="timeline-header">{!!html_entity_decode($consultation[0]->titre)!!}</h2>
+					<h2 class="timeline-header">{!!html_entity_decode($consultation[0]->titre_cons)!!}</h2>
 
 					<div class="timeline-body">
 						{!!html_entity_decode($consultation[0]->details_consultation)!!}

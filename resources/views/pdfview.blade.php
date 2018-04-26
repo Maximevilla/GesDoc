@@ -73,7 +73,7 @@ div.text-center {
 				<div class="timeline-item">
 					<span class="time"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($consultation->created_at)->format('H:i') }}</span>
 
-					<h2 class="timeline-header">{!!html_entity_decode($consultation->titre)!!}</h2>
+					<h2 class="timeline-header">{!!html_entity_decode($consultation->titre_cons)!!}</h2>
 
 					<div class="timeline-body">
 						{!!html_entity_decode($consultation->details_consultation)!!}
