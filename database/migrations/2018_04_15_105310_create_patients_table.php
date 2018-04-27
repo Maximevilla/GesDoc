@@ -28,8 +28,8 @@ class CreatePatientsTable extends Migration
           $table->text('allergies')->nullable();
           $table->longText('notes')->nullable();
           $table->integer('users_id')->unsigned();
-          $table->integer('num_ss')->unsigned();
-          $table->string('mutuelle')->nullable();
+          $table->integer('num_ss')->unsigned()->nullable();
+          $table->string('mutuelle')->nullable()->nullable();
           $table->foreign('users_id')->references('id')->on('users');
           $table->timestamps();
         });
