@@ -102,7 +102,6 @@
            <ul class="nav nav-tabs">
 
              <li class="active"><a href="#consultations" data-toggle="tab">Consultations</a></li>
-             <li><a href="#ordonnances" data-toggle="tab">Ordonnances</a></li>
              <li><a href="#nvlconsult" data-toggle="tab">Nvlle Consultation</a></li>
              <li><a href="#documents" data-toggle="tab">Documents</a></li>
              <li><a href="#plus" data-toggle="tab">Plus</a></li>
@@ -116,7 +115,14 @@
                <div>
                  <a href="{{ route('pdfview',['download'=>'pdf','patient_id'=>$patient->id]) }}">
                  <button class="btn btn-default">
-                 PDF Global
+                 PDF Consultations
+               </button>
+               </a>
+               
+
+                 <a href="{{ route('pdfviewordonnances',['download'=>'pdf','patient_id'=>$patient->id]) }}">
+                 <button class="btn btn-default">
+                 PDF Ordonnances
                </button>
                </a>
                <hr>
@@ -125,10 +131,10 @@
                <ul class="timeline">
                  <!-- timeline time label -->
 
-                 @foreach ( $consultations as $consultation)
+                 @foreach ( $fil as $fi)
                  <li class="time-label">
                        <span class="bg-red">
-                         {{ Carbon\Carbon::parse($consultation->created_at)->format('d-M-Y ') }}
+                         {{ Carbon\Carbon::parse($fi->created_at)->format('d-M-Y ') }}
 
                        </span>
                  </li>
@@ -139,7 +145,7 @@
                    <div class="timeline-item">
                    <div class=" box box-default collapsed-box">
                      <div class="box-header with-border">
-                       <h3 class="box-title">Consultation : {!!html_entity_decode($consultation->titre_cons)!!}</h3>
+                       <h3 class="box-title">Consultation : {!!html_entity_decode($fi->titre_cons)!!}</h3>
 
                        <div class="box-tools pull-right">
                          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
@@ -150,15 +156,15 @@
                      <!-- /.box-header -->
                      <div class="box-body">
                        <div class="timeline-item">
-                         <span class="time"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($consultation->created_at)->format('H:i') }}</span>
+                         <span class="time"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($fi->created_at)->format('H:i') }}</span>
 
                          <div class="timeline-body">
-                           {!!html_entity_decode($consultation->details_consultation)!!}
+                           {!!html_entity_decode($fi->details_consultation)!!}
 
-                           <span class="time"><i class="fa  fa-money"></i> <strong>Tarif : {{$consultation->tarif}}</strong></span>
+                           <span class="time"><i class="fa  fa-money"></i> <strong>Tarif : {{$fi->tarif}}</strong></span>
                          </div>
                          <div class="timeline-footer">
-                           <a href="{{ route('pdfviewuneconsult',['download'=>'pdf','consult_id'=>$consultation->id,'patient_id'=>$patient->id]) }}" class="btn btn-primary btn-xs">PDF</a>
+                           <a href="{{ route('pdfviewuneconsult',['download'=>'pdf','consult_id'=>$fi->id,'patient_id'=>$patient->id]) }}" class="btn btn-primary btn-xs">PDF</a>
                            <a class="btn btn-danger btn-xs">Effacer</a>
                          </div>
 
@@ -169,48 +175,13 @@
                  </div>
                  </li>
                  <!-- END timeline item -->
-                 @endforeach
-                 <!-- END timeline item -->
-
-                 <li>
-                   <i class="fa fa-clock-o bg-gray"></i>
-                 </li>
-               </ul>
-             </div>
-             <!-- /.tab-pane -->
-
-
-             <div class="tab-pane" id="ordonnances">
-               <!-- Post -->
-
-               <div>
-                 <a href="{{ route('pdfviewordonnances',['download'=>'pdf','patient_id'=>$patient->id]) }}">
-                 <button class="btn btn-default">
-                 PDF Global
-               </button>
-               </a>
-               <hr>
-               </div>
-               <!-- The timeline -->
-               <ul class="timeline timeline-inverse">
-                 <!-- timeline time label -->
-
-                 @foreach ( $ordonnances as $ordonnance)
-                 <li class="time-label">
-                       <span class="bg-red">
-                         {{ Carbon\Carbon::parse($ordonnance->created_at)->format('d-M-Y ') }}
-
-                       </span>
-                 </li>
-                 <!-- /.timeline-label -->
-                 <!-- timeline item -->
                  <li>
                    <i class="fa fa-envelope-o bg-blue"></i>
 
                    <div class="timeline-item">
                      <div class="box box-default collapsed-box">
                        <div class="box-header with-border">
-                         <h3 class="box-title">{!!html_entity_decode($ordonnance->titre)!!}</h3>
+                         <h3 class="box-title">{!!html_entity_decode($fi->titre)!!}</h3>
 
                          <div class="box-tools pull-right">
                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
@@ -220,36 +191,30 @@
                        </div>
                        <!-- /.box-header -->
                        <div class="box-body">
-                         <span class="time"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($ordonnance->created_at)->format('H:i') }}</span>
+                         <span class="time"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($fi->created_at)->format('H:i') }}</span>
 
                          <div class="timeline-body">
-                           {!!html_entity_decode($ordonnance->details_ordonnance)!!}
+                           {!!html_entity_decode($fi->details_ordonnance)!!}
 
                          </div>
                        <div class="timeline-footer">
-                           <a href="{{ route('pdfviewuneordonnance',['download'=>'pdf','ord_id'=>$ordonnance->id,'patient_id'=>$patient->id]) }}" class="btn btn-primary btn-xs">PDF</a>
+                           <a href="{{ route('pdfviewuneordonnance',['download'=>'pdf','ord_id'=>$fi->id,'patient_id'=>$patient->id]) }}" class="btn btn-primary btn-xs">PDF</a>
                            <a class="btn btn-danger btn-xs">Effacer</a>
                          </div>
                        </div>
                        <!-- /.box-body -->
                      </div>
 
-
-
-
-
                    </div>
                  </li>
                  <!-- END timeline item -->
-                 @endforeach
-                 <!-- END timeline item -->
+                    @endforeach
                  <li>
                    <i class="fa fa-clock-o bg-gray"></i>
                  </li>
                </ul>
-
-               <!-- /.post -->
              </div>
+
 
 
              <div class="tab-pane" id="documents">
@@ -384,18 +349,11 @@
                    <div class="form-group">
                      <textarea id="my-editor2" name="details_consultation" style="height: 300px" class="form-control">
 
-                       <h1><u>Entete</u></h1>
-                       <h4>SousTete</h4>
-                       <p>Blablablabalb blabla balbalbalbal</p>
+                       <h1><u>Gestes medicaux</u></h1>
+
                        <ul>
-                         <li>Liste element un</li>
-                         <li>Liste element deux</li>
-                         <li>Liste element trois</li>
-
+                         <li>Auscultation classique</li>
                        </ul>
-                       <p>Merci,</p>
-                       <p>John Doe</p>
-
                      </textarea>
                      <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
                      <script>
@@ -429,7 +387,18 @@
                          <strong><i class="fa  fa-clock-o margin-r-5"></i> Date : </strong>
                           {{$mytime = Carbon\Carbon::now()}}
                        </div>
-
+                       <div class="form-group">
+                       <div class="col-sm-offset-1 col-sm-10">
+                         <div class="radio">
+                           <input type="radio" id="ordonnanceoui" name="ordo_p" value="1">
+                           <label for="contactChoice1">Avec Ordonnance</label>
+                          </div>
+                          <div class="radio">
+                           <input type="radio" id="cordonnancenon" name="ordo_p" value="0" checked="checked" >
+                           <label for="contactChoice2">Sans Ordonnance</label>
+                         </div>
+                       </div>
+                     </div>
                        <div class="form-group">
                          <input class="form-control" id="cons_patient_id" name="ord_patient_id" type="hidden" value="{{$patient->id}}">
                        </div>
@@ -437,25 +406,18 @@
                          <input class="form-control" id="cons_user_id" name="ord_user_id" type="hidden" value="{{\Auth::user()->id}}">
                        </div>
                        <div class="form-group">
-                         <label class="control-label" for="titre">Titre</label>
+                         <label class="control-label" for="titre">Ordonnance Type</label>
                          <input class="form-control" id="titre" name="titre" type="text" />
                        </div>
 
                        <div class="form-group">
                          <textarea id="my-editor" name="details_ordonnance" style="height: 300px" class="form-control">
-
-                           <h1><u>Ordonnance</u></h1>
-                           <h4>SousTete</h4>
-                           <p>Blablablabalb blabla balbalbalbal</p>
                            <ul>
-                             <li>Liste element un</li>
-                             <li>Liste element deux</li>
-                             <li>Liste element trois</li>
+                             <li>Medicament un : trois fois par jour.</li>
+                             <li>Medicament deux</li>
+                             <li>Medicament trois</li>
 
                            </ul>
-                           <p>Merci,</p>
-                           <p>John Doe</p>
-
                          </textarea>
                          <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
                          <script>

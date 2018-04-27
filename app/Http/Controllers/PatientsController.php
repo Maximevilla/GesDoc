@@ -80,17 +80,15 @@ class PatientsController extends Controller
         $userid =  \Auth::user()->id ;
         $patient = \App\Patient::findOrFail($id);
 
-        $consultations = \DB::table('consultations')->where(function ($query) use ($userid,$id) {
+        $fil= \DB::table('consultations')->where(function ($query) use ($userid,$id) {
           $query->where('cons_user_id', '=', $userid)
           ->where('cons_patient_id','=',$id);
-        })->get();
+        })->join('ordonnances', 'ordonnances.ord_consult_id', '=', 'consultations.id')
+        ->select('consultations.id','cons_patient_id','tarif','details_consultation','titre_cons','consultations.created_at','ord_patient_id','ord_user_id','ord_consult_id','titre','details_ordonnance')
+        ->get();
 
-        $ordonnances = \DB::table('ordonnances')->where(function ($query) use ($userid,$id) {
-          $query->where('ord_user_id', '=', $userid)
-          ->where('ord_patient_id','=',$id);
-        })->get();
-
-        return view('patientprofil', compact('patient','consultations','ordonnances'));
+        //dd($fil );
+        return view('patientprofil', compact('fil','patient'));
 
        //return view('patientprofil', compact('patient'));
       //return dd($consultations->all());
