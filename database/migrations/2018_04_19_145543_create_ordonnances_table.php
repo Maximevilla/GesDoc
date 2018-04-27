@@ -20,6 +20,7 @@ class CreateOrdonnancesTable extends Migration
             $table->integer('ord_consult_id')->unsigned();
             $table->string('titre')->nullable();
             $table->longText('details_ordonnance')->nullable();
+            $table->string('ordo_presente')->nullable();
             $table->foreign('ord_user_id')->references('id')->on('docteurs');
             $table->foreign('ord_patient_id')->references('id')->on('patients');
             $table->foreign('ord_consult_id')->references('id')->on('consultations');

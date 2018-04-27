@@ -23,6 +23,7 @@
               <thead>
               <tr>
                 <th>Date</th>
+                <th>Moyen de Paiment</th>
                 <th>Chiffre d'affaires</th>
               </tr>
               </thead>
@@ -33,6 +34,7 @@
 
               <tr>
                 <td>{{$cons->daymonthyear}}</td>
+                <td>{{$cons->tp}}</td>
                 <td>{{money_format("%.2n", $cons->Sum)}}</td>
               </tr>
               @endforeach
@@ -41,6 +43,7 @@
               <tfoot>
               <tr>
                 <th>Date</th>
+                <th>Moyen de Paiment</th>
                 <th>Chiffre d'affaires</th>
               </tr>
               </tfoot>

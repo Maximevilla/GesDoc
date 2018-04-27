@@ -35,8 +35,8 @@ class ChiffreaffairesController extends Controller
           $query->where('cons_user_id', '=', $userid);
         })
         ->join('patients', 'consultations.cons_patient_id', '=', 'patients.id')
-        ->select(\DB::raw("CONCAT_WS('-',DAY(consultations.created_at),MONTH(consultations.created_at),YEAR(consultations.created_at)) as daymonthyear"),\DB::Raw('sum(consultations.tarif) as Sum'))
-        ->groupBy('daymonthyear')
+        ->select(\DB::raw("CONCAT_WS('-',DAY(consultations.created_at),MONTH(consultations.created_at),YEAR(consultations.created_at)) as daymonthyear"),\DB::Raw('sum(consultations.tarif) as Sum'),\DB::Raw('consultations.tpaiment as tp'))
+        ->groupBy('daymonthyear','tpaiment')
         ->get();
 
         $consultationsmois = \DB::table('consultations')

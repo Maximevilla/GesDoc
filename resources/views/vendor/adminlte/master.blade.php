@@ -72,7 +72,7 @@ $( document ).ready(function() {
 
 
   //Date range picker
-  
+
     //Date picker
     $('#datepicker').datepicker({
       autoclose: true
@@ -117,6 +117,8 @@ $('#ModalEdit').on('show.bs.modal', function (event) {
   var telmobile = button.data('telmobile')
   var mail = button.data('mail')
   var sexe = button.data('sexe')
+  var numeross = button.data('numeross')
+  var mutuelle = button.data('mutuelle')
   var medecintraitant = button.data('medecintraitant')
   var allergies = button.data('allergies')
   var notes = button.data('notes')
@@ -134,6 +136,8 @@ $('#ModalEdit').on('show.bs.modal', function (event) {
   modal.find('.modal-body #telmobile').val(telmobile)
   modal.find('.modal-body #mail').val(mail)
   modal.find('.modal-body #sexe').val(sexe)
+  modal.find('.modal-body #numero_ss').val(numeross)
+  modal.find('.modal-body #mutuelle').val(mutuelle)
   modal.find('.modal-body #medecintraitant').val(medecintraitant)
   modal.find('.modal-body #allergies').val(allergies)
   modal.find('.modal-body #notes').val(notes)

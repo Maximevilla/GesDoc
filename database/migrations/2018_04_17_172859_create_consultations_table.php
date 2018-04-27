@@ -19,6 +19,7 @@ class CreateConsultationsTable extends Migration
             $table->float('tarif')->unsigned()->default(0);
             $table->integer('cons_user_id')->unsigned();
             $table->longText('details_consultation')->nullable();
+            $table->string('tpaiment')->nullable();
             $table->string('titre_cons')->nullable();
             $table->foreign('cons_user_id')->references('id')->on('users');
             $table->foreign('cons_patient_id')->references('id')->on('patients');

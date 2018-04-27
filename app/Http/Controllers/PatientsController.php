@@ -80,16 +80,22 @@ class PatientsController extends Controller
         $userid =  \Auth::user()->id ;
         $patient = \App\Patient::findOrFail($id);
 
+        $eventpatient = \DB::table('events')->where(function ($query) use ($userid,$patient) {
+          $query->where('eve_user_id', '=', $userid)
+          ->where('eve_patient_id','=',$patient->id);
+        })->latest()
+        ->get();
+
         $fil= \DB::table('consultations')->where(function ($query) use ($userid,$id) {
           $query->where('cons_user_id', '=', $userid)
           ->where('cons_patient_id','=',$id);
         })->join('ordonnances', 'ordonnances.ord_consult_id', '=', 'consultations.id')
-        ->select('consultations.id','cons_patient_id','tarif','details_consultation','titre_cons','consultations.created_at','ord_patient_id','ord_user_id','ord_consult_id','titre','details_ordonnance')
+        ->select('ordonnances.ordo_presente','consultations.id','cons_patient_id','tarif','details_consultation','titre_cons','consultations.created_at','ord_patient_id','ord_user_id','ord_consult_id','titre','details_ordonnance')
         ->latest()
         ->get();
 
-        //dd($fil );
-        return view('patientprofil', compact('fil','patient'));
+         //dd($eventpatient);
+        return view('patientprofil', compact('fil','patient','eventpatient'));
 
        //return view('patientprofil', compact('patient'));
       //return dd($consultations->all());

@@ -53,6 +53,12 @@
                <li class="list-group-item">
                  <b>Medecin Traitant</b> <a class="pull-right">{{$patient->medecintraitant}}</a>
                </li>
+               <li class="list-group-item">
+                 <b>Numero SS</b> <a class="pull-right">{{$patient->numero_ss}}</a>
+               </li>
+               <li class="list-group-item">
+                 <b>Mutuelle</b> <a class="pull-right">{{$patient->mutuelle}}</a>
+               </li>
              </ul>
 
 
@@ -63,7 +69,21 @@
              <h3 class="box-title">Infos Supplementaires</h3>
            </div>
            <!-- /.box-header -->
-           <div class="box-body">
+           <div class="box-body" data-toggle="tooltip" title="Dernier rendez-vous enregistre">
+             <strong><i class="fa fa-clock-o margin-r-5"></i> Rendez-Vous</strong>
+
+             <p class="text-muted">
+               @if(is_null($eventpatient))
+
+               @else
+               @foreach($eventpatient as $ep)
+                      {{$ep->start_date}}
+                   @endforeach
+                   @endif
+
+             </p>
+
+             <hr>
              <strong><i class="fa fa-map-marker margin-r-5"></i> Adresse</strong>
 
              <p class="text-muted">
@@ -92,7 +112,7 @@
              </div>
            </div>
            <!-- /.box-body -->
-           <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#ModalEdit" data-patientid="{{$patient->id}}" data-notes="{{$patient->notes}}" data-allergies="{{$patient->allergies}}" data-nom="{{$patient->nom}}" data-prenom="{{$patient->prenom}}" data-naissance="{{$patient->naissance}}" data-addresse="{{$patient->addresse}}" data-telfixe="{{$patient->telfixe}}" data-telmobile="{{$patient->telmobile}}" data-mail="{{$patient->mail}}" data-sexe="{{$patient->sexe}}" data-medecintraitant="{{$patient->medecintraitant}}"><b>Modifier</b></a>
+           <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#ModalEdit" data-numeross="{{$patient->numero_ss}}" data-mutuelle="{{$patient->mutuelle}}" data-patientid="{{$patient->id}}" data-notes="{{$patient->notes}}" data-allergies="{{$patient->allergies}}" data-nom="{{$patient->nom}}" data-prenom="{{$patient->prenom}}" data-naissance="{{$patient->naissance}}" data-addresse="{{$patient->addresse}}" data-telfixe="{{$patient->telfixe}}" data-telmobile="{{$patient->telmobile}}" data-mail="{{$patient->mail}}" data-sexe="{{$patient->sexe}}" data-medecintraitant="{{$patient->medecintraitant}}"><b>Modifier</b></a>
          </div>
          <!-- /.box -->
        </div>
@@ -101,7 +121,7 @@
          <div class="nav-tabs-custom">
            <ul class="nav nav-tabs">
 
-             <li class="active"><a href="#consultations" data-toggle="tab">Consultations</a></li>
+             <li class="active"><a href="#consultations" data-toggle="tab">Historique</a></li>
              <li><a href="#nvlconsult" data-toggle="tab">Nvlle Consultation</a></li>
              <li><a href="#documents" data-toggle="tab">Documents</a></li>
              <li><a href="#plus" data-toggle="tab">Plus</a></li>
@@ -118,7 +138,7 @@
                  PDF Consultations
                </button>
                </a>
-               
+
 
                  <a href="{{ route('pdfviewordonnances',['download'=>'pdf','patient_id'=>$patient->id]) }}">
                  <button class="btn btn-default">
@@ -141,7 +161,7 @@
                  <!-- /.timeline-label -->
                  <!-- timeline item -->
                  <li>
-                   <i class="fa fa-user bg-blue"></i>
+                   <i class="fa fa-stethoscope bg-blue"></i>
                    <div class="timeline-item">
                    <div class=" box box-default collapsed-box">
                      <div class="box-header with-border">
@@ -175,13 +195,14 @@
                  </div>
                  </li>
                  <!-- END timeline item -->
+                 @if(($fi->ordo_presente) == '1')
                  <li>
                    <i class="fa fa-envelope-o bg-blue"></i>
 
                    <div class="timeline-item">
                      <div class="box box-default collapsed-box">
                        <div class="box-header with-border">
-                         <h3 class="box-title">{!!html_entity_decode($fi->titre)!!}</h3>
+                         <h3 class="box-title">Ordonnance : {!!html_entity_decode($fi->titre)!!}</h3>
 
                          <div class="box-tools pull-right">
                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
@@ -207,6 +228,7 @@
 
                    </div>
                  </li>
+                 @endif
                  <!-- END timeline item -->
                     @endforeach
                  <li>
@@ -341,9 +363,18 @@
                      <label class="control-label" for="titre">Motif</label>
                      <input class="form-control" id="titre_cons" name="titre_cons" type="text" />
                    </div>
-                   <div class="form-group">
+                   <div class="form-group form-inline">
+
                      <label class="control-label" for="tarif">Tarif</label>
-                     <input class="form-control" id="tarif" name="tarif" type="number" step="0.10" />
+                     <input class="form-control" id="tarif" name="tarif" type="number" step="0.01" />
+
+                     <label class="control-label"for="tpaiment"> Paiment</label>
+                     <select for="tpaiment" name="tpaiment" class="form-control">
+                       <option value="CB">CB</option>
+                       <option value="liquide"> Liquide</option>
+                       <option value="cheque">Cheque</option>
+                       <option value="cmu">CMU</option>
+                     </select>
                    </div>
 
                    <div class="form-group">
@@ -389,14 +420,17 @@
                        </div>
                        <div class="form-group">
                        <div class="col-sm-offset-1 col-sm-10">
-                         <div class="radio">
-                           <input type="radio" id="ordonnanceoui" name="ordo_p" value="1">
-                           <label for="contactChoice1">Avec Ordonnance</label>
+
+                         <div class="custom-control custom-radio">
+                           <input class="custom-control-input" type="radio" id="contactChoice1" name="ordo_presente" value="1">
+                           <label class="custom-control-label" for="contactChoice1">Avec Ordonnance</label>
                           </div>
-                          <div class="radio">
-                           <input type="radio" id="cordonnancenon" name="ordo_p" value="0" checked="checked" >
-                           <label for="contactChoice2">Sans Ordonnance</label>
+
+                          <div class="custom-control custom-radio">
+                           <input class="custom-control-input" type="radio" id="contactChoice2" name="ordo_presente" value="0" checked="checked" >
+                           <label class="custom-control-label" for="contactChoice2">Sans Ordonnance</label>
                          </div>
+
                        </div>
                      </div>
                        <div class="form-group">
