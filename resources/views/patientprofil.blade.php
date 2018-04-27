@@ -54,7 +54,7 @@
                  <b>Medecin Traitant</b> <a class="pull-right">{{$patient->medecintraitant}}</a>
                </li>
                <li class="list-group-item">
-                 <b>Numero SS</b> <a class="pull-right">{{$patient->numero_ss}}</a>
+                 <b>Numero SS</b> <a class="pull-right">{{$patient->num_ss}}</a>
                </li>
                <li class="list-group-item">
                  <b>Mutuelle</b> <a class="pull-right">{{$patient->mutuelle}}</a>
@@ -112,7 +112,7 @@
              </div>
            </div>
            <!-- /.box-body -->
-           <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#ModalEdit" data-numeross="{{$patient->numero_ss}}" data-mutuelle="{{$patient->mutuelle}}" data-patientid="{{$patient->id}}" data-notes="{{$patient->notes}}" data-allergies="{{$patient->allergies}}" data-nom="{{$patient->nom}}" data-prenom="{{$patient->prenom}}" data-naissance="{{$patient->naissance}}" data-addresse="{{$patient->addresse}}" data-telfixe="{{$patient->telfixe}}" data-telmobile="{{$patient->telmobile}}" data-mail="{{$patient->mail}}" data-sexe="{{$patient->sexe}}" data-medecintraitant="{{$patient->medecintraitant}}"><b>Modifier</b></a>
+           <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#ModalEdit" data-numeross="{{$patient->num_ss}}" data-mutuelle="{{$patient->mutuelle}}" data-patientid="{{$patient->id}}" data-notes="{{$patient->notes}}" data-allergies="{{$patient->allergies}}" data-nom="{{$patient->nom}}" data-prenom="{{$patient->prenom}}" data-naissance="{{$patient->naissance}}" data-addresse="{{$patient->addresse}}" data-telfixe="{{$patient->telfixe}}" data-telmobile="{{$patient->telmobile}}" data-mail="{{$patient->mail}}" data-sexe="{{$patient->sexe}}" data-medecintraitant="{{$patient->medecintraitant}}"><b>Modifier</b></a>
          </div>
          <!-- /.box -->
        </div>

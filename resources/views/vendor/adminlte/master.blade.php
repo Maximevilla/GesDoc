@@ -136,7 +136,7 @@ $('#ModalEdit').on('show.bs.modal', function (event) {
   modal.find('.modal-body #telmobile').val(telmobile)
   modal.find('.modal-body #mail').val(mail)
   modal.find('.modal-body #sexe').val(sexe)
-  modal.find('.modal-body #numero_ss').val(numeross)
+  modal.find('.modal-body #num_ss').val(numeross)
   modal.find('.modal-body #mutuelle').val(mutuelle)
   modal.find('.modal-body #medecintraitant').val(medecintraitant)
   modal.find('.modal-body #allergies').val(allergies)
