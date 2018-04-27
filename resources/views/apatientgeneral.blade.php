@@ -75,6 +75,18 @@
           <input class="form-control" id="addresse" name="addresse" type="text"/>
          </div>
          <div class="form-group ">
+          <label class="control-label " for="numero_ss">
+           Numero Securite Sociale
+          </label>
+          <input class="form-control" id="numero_ss" name="numero_ss" type="number"/>
+         </div>
+         <div class="form-group ">
+          <label class="control-label " for="mutuelle">
+           Mutuelle
+          </label>
+          <input class="form-control" id="mutuelle" name="mutuelle" type="text"/>
+         </div>
+         <div class="form-group ">
           <label class="control-label " for="medecintraitant">
            Medecin Traitant
           </label>
