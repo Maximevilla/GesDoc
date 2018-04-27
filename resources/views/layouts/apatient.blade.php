@@ -73,10 +73,10 @@
           <input class="form-control" id="medecintraitant" name="medecintraitant" type="text"/>
          </div>
          <div class="form-group ">
-          <label class="control-label " for="numero_ss">
+          <label class="control-label " for="num_ss">
            Numero Securite Sociale
           </label>
-          <input class="form-control" id="numero_ss" name="numero_ss" type="number"/>
+          <input class="form-control" id="num_ss" name="num_ss" type="number"/>
          </div>
          <div class="form-group ">
           <label class="control-label " for="mutuelle">
