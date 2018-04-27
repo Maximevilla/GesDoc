@@ -85,6 +85,7 @@ class PatientsController extends Controller
           ->where('cons_patient_id','=',$id);
         })->join('ordonnances', 'ordonnances.ord_consult_id', '=', 'consultations.id')
         ->select('consultations.id','cons_patient_id','tarif','details_consultation','titre_cons','consultations.created_at','ord_patient_id','ord_user_id','ord_consult_id','titre','details_ordonnance')
+        ->latest()
         ->get();
 
         //dd($fil );
