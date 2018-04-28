@@ -229,6 +229,149 @@
                    </div>
                  </li>
                  @endif
+                 @if(is_null($fi->fichier1url))
+
+                 @else
+                 <li>
+                   <i class="fa fa-file bg-blue"></i>
+
+                   <div class="timeline-item">
+                     <div class="box box-default collapsed-box">
+                       <div class="box-header with-border">
+                         <h3 class="box-title"> {!!html_entity_decode($fi->fichier1titre)!!}</h3>
+
+                         <div class="box-tools pull-right">
+                           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                           </button>
+                         </div>
+                         <!-- /.box-tools -->
+                       </div>
+                       <!-- /.box-header -->
+                       <div class="box-body">
+
+                         <div class="timeline-body">
+                            <iframe src="{{($fi->fichier1url)}}" class="embed-responsive-item" width="100%"></iframe>
+
+                         </div>
+                       <div class="timeline-footer">
+                           <a href="{{ $fi->fichier1url }}" target="_blank" class="btn btn-primary btn-xs">Fichier</a>
+
+                         </div>
+                       </div>
+                       <!-- /.box-body -->
+                     </div>
+
+                   </div>
+                 </li>
+                 @endif
+
+                 @if(is_null($fi->fichier2url))
+
+                 @else
+                 <li>
+                   <i class="fa fa-file bg-blue"></i>
+
+                   <div class="timeline-item">
+                     <div class="box box-default collapsed-box">
+                       <div class="box-header with-border">
+                         <h3 class="box-title"> {!!html_entity_decode($fi->fichier2titre)!!}</h3>
+
+                         <div class="box-tools pull-right">
+                           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                           </button>
+                         </div>
+                         <!-- /.box-tools -->
+                       </div>
+                       <!-- /.box-header -->
+                       <div class="box-body">
+
+                         <div class="timeline-body">
+                            <iframe src="{{($fi->fichier2url)}}" class="embed-responsive-item" width="100%"></iframe>
+
+                         </div>
+                       <div class="timeline-footer">
+                           <a href="{{ $fi->fichier2url }}" target="_blank" class="btn btn-primary btn-xs">Fichier</a>
+
+                         </div>
+                       </div>
+                       <!-- /.box-body -->
+                     </div>
+
+                   </div>
+                 </li>
+                 @endif
+
+                 @if(is_null($fi->fichier3url))
+
+                 @else
+                 <li>
+                   <i class="fa fa-file bg-blue"></i>
+
+                   <div class="timeline-item">
+                     <div class="box box-default collapsed-box">
+                       <div class="box-header with-border">
+                         <h3 class="box-title"> {!!html_entity_decode($fi->fichier3titre)!!}</h3>
+
+                         <div class="box-tools pull-right">
+                           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                           </button>
+                         </div>
+                         <!-- /.box-tools -->
+                       </div>
+                       <!-- /.box-header -->
+                       <div class="box-body">
+
+                         <div class="timeline-body">
+                            <iframe src="{{($fi->fichier3url)}}" class="embed-responsive-item" width="100%"></iframe>
+
+                         </div>
+                       <div class="timeline-footer">
+                           <a href="{{ $fi->fichier3url }}" target="_blank" class="btn btn-primary btn-xs">Fichier</a>
+
+                         </div>
+                       </div>
+                       <!-- /.box-body -->
+                     </div>
+
+                   </div>
+                 </li>
+                 @endif
+
+                 @if(is_null($fi->fichier4url))
+
+                 @else
+                 <li>
+                   <i class="fa fa-file bg-blue"></i>
+
+                   <div class="timeline-item">
+                     <div class="box box-default collapsed-box">
+                       <div class="box-header with-border">
+                         <h3 class="box-title"> {!!html_entity_decode($fi->fichier4titre)!!}</h3>
+
+                         <div class="box-tools pull-right">
+                           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                           </button>
+                         </div>
+                         <!-- /.box-tools -->
+                       </div>
+                       <!-- /.box-header -->
+                       <div class="box-body">
+
+                         <div class="timeline-body">
+                            <iframe src="{{($fi->fichier4url)}}" class="embed-responsive-item" width="100%"></iframe>
+
+                         </div>
+                       <div class="timeline-footer">
+                           <a href="{{ $fi->fichier4url }}" target="_blank" class="btn btn-primary btn-xs">Fichier</a>
+
+                         </div>
+                       </div>
+                       <!-- /.box-body -->
+                     </div>
+
+                   </div>
+                 </li>
+                 @endif
                  <!-- END timeline item -->
                     @endforeach
                  <li>
@@ -371,7 +514,7 @@
                      <label class="control-label"for="tpaiment"> Paiment</label>
                      <select for="tpaiment" name="tpaiment" class="form-control">
                        <option value="CB">CB</option>
-                       <option value="liquide"> Liquide</option>
+                       <option value="especes"> Especes</option>
                        <option value="cheque">Cheque</option>
                        <option value="cmu">CMU</option>
                      </select>
@@ -471,6 +614,106 @@
                  </div>
                </div>
 
+               <div class="box box-default collapsed-box">
+                 <div class="box-header with-border">
+                   <h3 class="box-title">Ajouter fichier au Profil</h3>
+
+                   <div class="box-tools pull-right">
+                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                     </button>
+                   </div>
+                   <!-- /.box-tools -->
+                 </div>
+                 <div  id="nvfichier">
+
+                     <div class="box-body">
+                       <div class="form-group">
+                       <div class="col-sm-offset-1 col-sm-10">
+
+                         <div class="custom-control custom-radio">
+                           <input class="custom-control-input" type="radio" id="contactChoice1" name="fichiers_present" value="1">
+                           <label class="custom-control-label" for="contactChoice1">Avec Fichiers</label>
+                          </div>
+
+                          <div class="custom-control custom-radio">
+                           <input class="custom-control-input" type="radio" id="contactChoice2" name="fichiers_present" value="0" checked="checked" >
+                           <label class="custom-control-label" for="contactChoice2">Sans Fichiers</label>
+                         </div>
+                         <input type="hidden" name="consultation_id" value="">
+                       </div>
+                     </div>
+
+                       <div class="col-sm-6">
+                       <div class="input-group inline">
+
+                         <label for="label1">Titre Descriptif</label>
+                         <input id="label1" class="form-control" type="text" name="fichier1titre">
+                         <span class="input-group-btn">
+                           <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                             <i class="fa fa-picture-o"></i> Fichier
+                           </a>
+                         </span>
+                         <input id="thumbnail" class="form-control" type="text" name="fichier1url">
+
+                       </div>
+                       <img id="holder" style="margin-top:15px;max-height:100px;">
+                     </div>
+
+                       <div class="col-sm-6">
+                       <div class="input-group inline">
+
+                         <label for="label2">Titre Descriptif</label>
+                         <input id="label2" class="form-control" type="text" name="fichier2titre">
+
+
+                         <span class="input-group-btn">
+                           <a id="lfm2" data-input="thumbnail2" data-preview="holder2" class="btn btn-primary">
+                             <i class="fa fa-picture-o"></i> Fichier
+                           </a>
+                         </span>
+                         <input id="thumbnail2" class="form-control" type="text" name="fichier2url">
+
+                       </div>
+                       <img id="holder2" style="margin-top:15px;max-height:100px;">
+                     </div>
+
+
+                     <div class="col-sm-6">
+                     <div class="input-group inline">
+                       <hr>
+                       <label for="label3">Titre Descriptif</label>
+                       <input id="label3" class="form-control" type="text" name="fichier3titre">
+                       <span class="input-group-btn">
+                         <a id="lfm3" data-input="thumbnail3" data-preview="holder3" class="btn btn-primary">
+                           <i class="fa fa-picture-o"></i> Fichier
+                         </a>
+                       </span>
+                       <input id="thumbnail3" class="form-control" type="text" name="fichier3url">
+                     </div>
+                     <img id="holder3" style="margin-top:15px;max-height:100px;">
+                   </div>
+
+                   <div class="col-sm-6">
+                   <div class="input-group inline">
+                     <hr>
+                     <label for="label4">Titre Descriptif</label>
+                     <input id="label4" class="form-control" type="text" name="fichier4titre">
+                     <span class="input-group-btn">
+                       <a id="lfm4" data-input="thumbnail4" data-preview="holder4" class="btn btn-primary">
+                         <i class="fa fa-picture-o"></i> Fichier
+                       </a>
+                     </span>
+                   <input id="thumbnail4" class="form-control" type="text" name="fichier4url">
+
+
+                   </div>
+                   <img id="holder4" style="margin-top:15px;max-height:100px;">
+                 </div>
+
+                     </div>
+                   </div>
+                 </div>
+
                  <div class="box-footer">
                    <div class="pull-right">
                      <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Valider</button>
@@ -534,6 +777,13 @@
 
 
 @section('js')
+<script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+<script>
+ $('#lfm').filemanager('file');
+ $('#lfm2').filemanager('file');
+ $('#lfm3').filemanager('file');
+ $('#lfm4').filemanager('file');
+</script>
 <script>
   var options = {
     filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',

@@ -92,9 +92,11 @@ class PatientsController extends Controller
         })->join('ordonnances', 'ordonnances.ord_consult_id', '=', 'consultations.id')
         ->select('ordonnances.ordo_presente','consultations.id','cons_patient_id','tarif','details_consultation','titre_cons','consultations.created_at','ord_patient_id','ord_user_id','ord_consult_id','titre','details_ordonnance')
         ->latest()
+        ->leftjoin('fichiers', 'fichiers.consultation_id', '=', 'consultations.id')
+        ->select('fichier4titre','fichier4url','fichier3titre','fichier3url','fichier2titre','fichier2url','fichier1titre','fichier1url','ordonnances.ordo_presente','consultations.id','cons_patient_id','tarif','details_consultation','titre_cons','consultations.created_at','ord_patient_id','ord_user_id','ord_consult_id','titre','details_ordonnance')
         ->get();
 
-         //dd($eventpatient);
+         //dd($fil);
         return view('patientprofil', compact('fil','patient','eventpatient'));
 
        //return view('patientprofil', compact('patient'));

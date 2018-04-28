@@ -48,10 +48,15 @@ class ConsultationsController extends Controller
     public function store(Request $request)
     {
         //
+        //return dd($request);
         //activity()->log('Created new Consultation');
         $consultation = \App\Consultations::create($request->all());
         $insertedid = $consultation->id;
         \Request::merge(['ord_consult_id' => $insertedid]);
+        \Request::merge(['consultation_id' => $insertedid]);
+        if ($request->fichiers_present=='1') {
+           \App\Fichier::create($request->all());
+        }
 
 
        \App\Ordonnance::create($request->all());
