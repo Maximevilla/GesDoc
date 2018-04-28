@@ -392,62 +392,20 @@
              <div class="tab-pane" id="plus">
                <!-- Post -->
                <div class="row">
+
+
+
+
                    <div class="col-md-6 col-sm-6 col-xs-12">
-
-
                      <div class="box box-default collapsed-box">
                        <div class="box-header with-border">
-                         <h3 class="box-title">Devis</h3>
+                         <h3 class="box-title">Besoin d'une foncionnalite ?</h3>
                          <div class="box-tools pull-right">
                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
                          </div><!-- /.box-tools -->
                        </div><!-- /.box-header -->
                        <div class="box-body">
-                         The body of the box
-                       </div><!-- /.box-body -->
-                     </div><!-- /.box -->
-                   </div>
-
-                   <div class="col-md-6 col-sm-6 col-xs-12">
-                     <div class="box box-default collapsed-box">
-                       <div class="box-header with-border">
-                         <h3 class="box-title">Factures</h3>
-                         <div class="box-tools pull-right">
-                           <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                         </div><!-- /.box-tools -->
-                       </div><!-- /.box-header -->
-                       <div class="box-body">
-                         The body of the box
-                       </div><!-- /.box-body -->
-                     </div><!-- /.box -->
-
-                   </div>
-
-                   <div class="col-md-6 col-sm-6 col-xs-12">
-                     <div class="box box-default collapsed-box">
-                       <div class="box-header with-border">
-                         <h3 class="box-title">Consentements</h3>
-                         <div class="box-tools pull-right">
-                           <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                         </div><!-- /.box-tools -->
-                       </div><!-- /.box-header -->
-                       <div class="box-body">
-                         The body of the box
-                       </div><!-- /.box-body -->
-                     </div><!-- /.box -->
-
-                   </div>
-
-                   <div class="col-md-6 col-sm-6 col-xs-12">
-                     <div class="box box-default collapsed-box">
-                       <div class="box-header with-border">
-                         <h3 class="box-title">Demandes d'agrement prealable</h3>
-                         <div class="box-tools pull-right">
-                           <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                         </div><!-- /.box-tools -->
-                       </div><!-- /.box-header -->
-                       <div class="box-body">
-                         The body of the box
+                         Demandez !
                        </div><!-- /.box-body -->
                      </div><!-- /.box -->
 
