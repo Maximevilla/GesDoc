@@ -25,7 +25,7 @@
 		</div>
 		<br/>
 
-		<div><h3>Patient</h3>
+		<div><h4>Patient</h4>
 			<p><strong>Nom : </strong>{{$patient->nom}}</p>
 			<p><strong>Prenom : </strong>{{$patient->prenom}}</p>
 			<p><strong>Tel Fixe : </strong>{{$patient->telfixe}}</p>
@@ -46,7 +46,7 @@
 	                    <th>Description</th>
 	                    <th>Prix</th>
 											<th>Quantite</th>
-											<th>Tax</th>
+											<th>Taxe</th>
 	                    <th>Total</th>
 	                </tr>
 	            </thead>
