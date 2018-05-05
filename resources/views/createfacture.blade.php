@@ -15,7 +15,7 @@
                     {{ csrf_field() }}
                   <div class="col-md-12">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary pull-right" id="saveInvoice"><i class="fa fa-save"></i> Creer Facture</button>
+                        <button type="submit" class="btn btn-primary pull-right" id="saveInvoice"><i class="fa fa-save"></i> Valider Facture</button>
                     </div>
                       <div class="col-md-7" style="padding: 0px">
                           <div class="contact to">
@@ -36,15 +36,7 @@
                                       <select class="form-control input-sm chosen" required="required" id="currency" name="currency"><option value="AFN(؋)">Afghanistan, Afghani</option><option value="AOA(Kz)">Angola, Kwanza</option><option value="LBP(ل.ل.‏)">Lebanese Pound</option><option value="SAR(﷼)">Saudi Riyal</option><option value="TZS(TSh)">Tanzanian Shilling</option><option value="NGN(₦)">Nigeria, Naira</option><option value="EUR(€)">Euro</option><option value="USD($)">US Dollar</option><option value="AZN(₼)">Azerbaijanian Manat</option><option value="GBP(£)">Pound Sterling</option><option value="BIF(FBu)">Burundi Franc</option><option value="PLN(zł)">Poland, Zloty</option><option value="ARS($)">Argentine Peso</option><option value="MZN(MT)">Mozambique Metical</option><option value="KES(S)">Kenyan Shilling</option><option value="ALL(Lek)">Albania, Lek</option><option value="LKR(₨)">Sri Lanka Rupee</option><option value="GIP(£)">Gibraltar Pound</option><option value="GHS(₵)">Ghana Cedi</option><option value="INR(₹)">Indian Rupee</option></select>
                                   </div>
                               </div>
-                              <div class="form-group">
-                                  <label for="number">Facture numero</label>
-                                  <div class="input-group col-md-9">
-                                      <input class="form-control input-sm" id="number" required="required" readonly="readonly" name="number" type="text" value="INV-123">
-                                      <span class="input-group-addon" style="padding-top: 6px;padding-bottom: 6px;">
-                                          <a id="change_invoice_num" href="javascript:void(0)"><i class="fa fa-pencil"></i></a>
-                                      </span>
-                                  </div>
-                              </div>
+
 
                           </div>
                       </div>
@@ -99,20 +91,20 @@
                   <table class="table">
                       <tbody>
                       <tr>
-                          <th style="width:50%">Sub Total</th>
+                          <th style="width:50%">Sous Total</th>
                           <td class="text-right">
                               <span id="subTotal">0.00</span>
                           </td>
                       </tr>
                       <tr>
-                          <th>Tax</th>
+                          <th>Taxe</th>
                           <td class="text-right">
                               <span id="taxTotal">0.00</span>
                           </td>
                       </tr>
                       <tr>
                           <th style="vertical-align: middle">
-                              Discount
+                              Rabais
                               <select class="text-right input-sm calcEvent" id="discount_mode" style="width:50%" name="discount_mode"><option value="1">%</option><option value="0">Amount</option></select>
                           </th>
                           <td class="text-right">
@@ -134,7 +126,7 @@
               <div class="col-md-12">
                   <div class="form-group">
                       <label for="notes">Notes</label>
-                      <textarea id="my-editor"  class="form-control"rows="2" name="notes" cols="50" id="notes">{!! old('content', 'test editor content') !!}</textarea>
+                      <textarea id="my-editor"  class="form-control"rows="2" name="notes" cols="50" id="notes">{!! old('content', '') !!}</textarea>
                       <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
                       <script>
                       var options = {
@@ -148,7 +140,7 @@
                   </div>
                   <div class="form-group">
                       <label for="terms">Terms</label>
-                      <textarea id="terms"  class="form-control"rows="2" name="terms" cols="50" id="notes">{!! old('content', 'test editor content') !!}</textarea>
+                      <textarea id="terms"  class="form-control"rows="2" name="terms" cols="50" id="notes">{!! old('content', '') !!}</textarea>
                       <script>
                       var options = {
                         filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',

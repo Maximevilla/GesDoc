@@ -19,7 +19,7 @@ class CreateFacturesTable extends Migration
             $table->integer('patient_id')->unsigned();
             $table->string('currency')->default('EUR');
             $table->integer('status');
-            $table->float('total');
+            $table->float('total')->default(0);
             $table->float('discount')->nullable()->default(0);
             $table->string('notes')->nullable();
             $table->string('terms')->nullable();

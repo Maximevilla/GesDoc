@@ -13,7 +13,7 @@
           <h3 class="box-title">Liste des Factures</h3>
           <h3 class="box-title pull-right">
                         <div class="box-tools ">
-                            <a href="{{route('factures.create')}}" class="btn btn-primary btn-xs"> <i class="fa fa-plus"></i> New Invoice</a>
+                            <a href="{{route('factures.create')}}" class="btn btn-primary btn-xs"> <i class="fa fa-plus"></i> Nouvelle Facture</a>
                         </div>
                         </h3>
         </div>

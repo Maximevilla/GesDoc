@@ -37,7 +37,6 @@
 
 	</div>
 
-	<h4>Items:</h4>
 	        <table class="table table-bordered">
 	            <thead>
 	                <tr>
