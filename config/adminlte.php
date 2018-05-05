@@ -154,9 +154,21 @@ return [
               ],
             ],
         [
-            'text'        => 'Chiffre D\'Affaires',
+            'text'        => 'Facturation',
             'url'         => 'chiffreaffaires',
             'icon'        => 'money',
+            'submenu' => [
+                [
+                    'text' => 'Chiffre D\'Affaires',
+                    'url'  => 'chiffreaffaires',
+                    'icon' => 'area-chart',
+                ],
+                [
+                    'text' => 'Factures',
+                    'icon' => 'list-alt',
+                    'url'  => 'factures',
+                ],
+              ],
             //'label'       => 4,
             //'label_color' => 'success',
         ],

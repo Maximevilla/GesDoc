@@ -19,6 +19,8 @@ Route::middleware(['auth'])->group(function () {
   //Route::get('/admin', function () {
     //   return view('admin');});
 
+    Route::resource('factures', 'FacturesController');
+    Route::get('pdfviewfacture',array('as'=>'pdfviewfacture','uses'=>'FacturesController@pdfviewfacture'));
 
 Route::resource('chiffreaffaires', 'ChiffreaffairesController');
     Route::get('/payments/excel',
