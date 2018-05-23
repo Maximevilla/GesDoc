@@ -3,14 +3,14 @@ Gestion d'un cabinet Medical
 Licence :  GNU Affero General Public License.
 https://www.gnu.org/licenses/agpl.html
 
-Example : http://gesdoc.canigoinfo.com/
+**Example** : http://gesdoc.canigoinfo.com/
 
 user : info@canigoinfo.com  
 password : demodoc1
 
 Simple website to install on a RaspberryPi for example, in order to  manage a Doctor's Office.
 
-Install :
+**Install** :
 
 git clone https://bitbucket.org/you/yourproject (on remote machine)
 
