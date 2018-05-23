@@ -1,7 +1,7 @@
 # GesDoc
 Gestion d'un cabinet Medical
 
-Example : gesdoc.canifoinfo.com
+Example : http://gesdoc.canigoinfo.com/
 user : info@canigoinfo.com  
 password : demodoc1
 
