@@ -1,7 +1,10 @@
 # GesDoc
 Gestion d'un cabinet Medical
+Licence :  GNU Affero General Public License.
+https://www.gnu.org/licenses/agpl.html
 
 Example : http://gesdoc.canigoinfo.com/
+
 user : info@canigoinfo.com  
 password : demodoc1
 
@@ -16,3 +19,6 @@ npm install
 php artisan key:generate
 Create and edit .env file
 php artisan migrate
+
+![alt text](https://www.gnu.org/graphics/agplv3-155x51.png)
+
