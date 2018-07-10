@@ -1,8 +1,12 @@
 # GesDoc
-Gestion d'un cabinet Medical WorkInProgress
 
-Licence :  GNU Affero General Public License.
-https://www.gnu.org/licenses/agpl.html
+> Gestion d'un cabinet Medical 
+>
+
+**Not Ready for Production**
+
+[Licence](https://www.gnu.org/licenses/agpl.html) :  GNU Affero General Public License.
+
 
 **Example** : http://gesdoc.canigoinfo.com/
 
@@ -13,6 +17,7 @@ Simple website to install on a RaspberryPi for example, in order to  manage a Do
 
 **Install** :
 
+~~~~
 git clone https://bitbucket.org/you/yourproject (on remote machine)
 
 #cd yourproject
@@ -26,6 +31,7 @@ git clone https://bitbucket.org/you/yourproject (on remote machine)
 Create and edit .env file
 
 #php artisan migrate
+~~~~
 
 ![alt text](https://www.gnu.org/graphics/agplv3-155x51.png)
 
