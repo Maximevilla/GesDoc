@@ -1,5 +1,6 @@
 # GesDoc
-Gestion d'un cabinet Medical
+Gestion d'un cabinet Medical WorkInProgress
+
 Licence :  GNU Affero General Public License.
 https://www.gnu.org/licenses/agpl.html
 
